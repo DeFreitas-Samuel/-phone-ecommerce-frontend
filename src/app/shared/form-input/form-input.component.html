@@ -1,0 +1,13 @@
+<div class="form-input">
+  <label for="firstname">{{label}}</label>
+  <input id="firstname"
+         name="firstname"
+         type="text"
+         placeholder="Enter your firstname"
+         [(ngModel)]="user.firstname"
+         #firstname="ngModel"
+         required>
+  <div [hidden]="firstname.valid || firstname.pristine" class="input-error">
+    The name must not be empty
+  </div>
+</div>

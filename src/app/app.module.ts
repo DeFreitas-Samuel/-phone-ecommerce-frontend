@@ -8,12 +8,14 @@ import {FormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import { SignupComponent } from './signup/signup.component';
+import { FormInputComponent } from './shared/form-input/form-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    FormInputComponent
   ],
   imports: [
     BrowserModule,

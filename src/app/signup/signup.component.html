@@ -1,17 +1,6 @@
 <form #signUpForm = "ngForm" (ngSubmit)="signUp()">
-  <div class="form-input">
-    <label for="firstname">Firstname *</label>
-    <input id="firstname"
-           name="firstname"
-           type="text"
-           placeholder="Enter your firstname"
-           [(ngModel)]="user.firstname"
-           #firstname="ngModel"
-           required>
-    <div [hidden]="firstname.valid || firstname.pristine" class="input-error">
-      The name must not be empty
-    </div>
-  </div>
+  <app-form-input></app-form-input>
+
   <div class="form-input">
     <label for="lastname">Lastname *</label>
     <input id="lastname"
