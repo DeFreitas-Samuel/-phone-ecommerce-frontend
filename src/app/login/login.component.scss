@@ -1,0 +1,28 @@
+.form-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  input {
+    border-radius: 5px;
+    border-color: gray;
+  }
+}
+form {
+  width: 25vw;
+}
+
+.ng-invalid:not(form).ng-dirty {
+  outline: none;
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 0 3px #fde6e8;
+
+}
+
+.ng-invalid:not(form).ng-dirty:focus {
+  border-color: #dc3545;
+}
+
+.input-error {
+  margin-bottom: 0.5em;
+  background-color: #fde6e8;
+  color:rgba(220, 53, 69, 1) ;
+}

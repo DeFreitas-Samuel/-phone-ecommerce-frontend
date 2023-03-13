@@ -1,0 +1,79 @@
+<form #signUpForm = "ngForm" (ngSubmit)="signUp()">
+  <div class="form-input">
+    <label for="firstname">Firstname *</label>
+    <input id="firstname"
+           name="firstname"
+           type="text"
+           placeholder="Enter your firstname"
+           [(ngModel)]="user.firstname"
+           #firstname="ngModel"
+           required>
+    <div [hidden]="firstname.valid || firstname.pristine" class="input-error">
+      The name must not be empty
+    </div>
+  </div>
+  <div class="form-input">
+    <label for="lastname">Lastname *</label>
+    <input id="lastname"
+           name="lastname"
+           type="text"
+           placeholder="Enter your lastname"
+           [(ngModel)]="user.lastname"
+           #lastname="ngModel"
+           required>
+    <div [hidden]="lastname.valid || lastname.pristine" class="input-error">
+      The lastname must not be empty
+    </div>
+  </div>
+  <div class="form-input">
+    <label for="address1">Address 1 *</label>
+    <input id="address1"
+           name="address1"
+           type="text"
+           placeholder="Enter your address 1"
+           [(ngModel)]="user.address1"
+           #address1="ngModel"
+           required>
+    <div [hidden]="address1.valid || address1.pristine" class="input-error">
+      The Address 1 must not be empty
+    </div>
+  </div>
+
+  <div class="form-input">
+    <label for="address2">Address 2</label>
+    <input id="address2"
+           name="address2"
+           type="text"
+           placeholder="Enter your address2"
+           [(ngModel)]="user.address2">
+  </div>
+
+  <div class="form-input">
+    <label for="email">Email *</label>
+    <input id="email"
+           name="email"
+           type="email"
+           placeholder="Enter your email"
+           [(ngModel)]="user.email"
+           #email="ngModel"
+           required>
+    <div [hidden]="email.valid || email.pristine" class="input-error">
+      The email must not be empty and be a valid email
+    </div>
+
+  </div>
+  <div class="form-input">
+    <label for="password">Password *</label>
+    <input id="password"
+           name="password"
+           type="password"
+           placeholder="Create your password"
+           [(ngModel)]="user.password"
+           #password="ngModel"
+           required>
+    <div [hidden]="password.valid || password.pristine" class="input-error">
+      The password must not be empty, and must be at least 8 characters long
+    </div>
+  </div>
+  <button type="submit" [disabled]="!signUpForm.form.valid" mat-raised-button>Create Account</button>
+</form>

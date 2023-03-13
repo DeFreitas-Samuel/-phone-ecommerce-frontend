@@ -1,0 +1,31 @@
+<form #loginForm = "ngForm" (ngSubmit)="login()">
+
+  <div class="form-input">
+    <label for="email">Email *</label>
+    <input id="email"
+           name="email"
+           type="email"
+           placeholder="Enter your email"
+           [(ngModel)]="user.email"
+           #email="ngModel"
+           required>
+    <div [hidden]="email.valid || email.pristine" class="input-error">
+      The email must not be empty and be a valid email
+    </div>
+
+  </div>
+  <div class="form-input">
+    <label for="password">Password *</label>
+    <input id="password"
+           name="password"
+           type="password"
+           placeholder="Create your password"
+           [(ngModel)]="user.password"
+           #password="ngModel"
+           required>
+    <div [hidden]="password.valid || password.pristine" class="input-error">
+      The password must not be empty
+    </div>
+  </div>
+  <button type="submit" [disabled]="!loginForm.form.valid" mat-raised-button>Create Account</button>
+</form>
