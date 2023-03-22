@@ -8,6 +8,7 @@
            placeholder="Enter your email"
            [(ngModel)]="user.email"
            #email="ngModel"
+           email
            required>
     <div [hidden]="email.valid || email.pristine" class="input-error">
       The email must not be empty and be a valid email

@@ -36,11 +36,27 @@
   </div>
 
   <div class="form-input">
-    <label for="address2">Address 2</label>
-    <input id="address2"
+    <label for="phonenumber">Phone Number *</label>
+    <input id="phonenumber"
            type="text"
-           placeholder="Enter your address2"
-           formControlName= "address2">
+           placeholder="Enter your phone number"
+           formControlName= "phonenumber">
+    <div  *ngIf="!signUpForm.get('phonenumber')?.valid && signUpForm.get('phonenumber')?.dirty"
+          class="input-error">
+      The phone number must not be empty and be a valid phone number
+    </div>
+  </div>
+
+  <div class="form-input">
+    <label for="birthdate">Birthdate *</label>
+    <input id="birthdate"
+           type="date"
+           placeholder="Enter your birthdate"
+           formControlName= "birthdate">
+    <div  *ngIf="!signUpForm.get('birthdate')?.valid && signUpForm.get('birthdate')?.dirty"
+          class="input-error">
+      The birthdate must not be empty and be a valid date
+    </div>
   </div>
 
   <div class="form-input">

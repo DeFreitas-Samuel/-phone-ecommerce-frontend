@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../Models/User";
+import {User} from "../../Models/User";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -16,9 +16,10 @@ export class SignupComponent implements OnInit {
       'firstname': new FormControl(null, Validators.required),
       'lastname': new FormControl(null, Validators.required),
       'address1': new FormControl(null, Validators.required),
-      'address2': new FormControl(null),
-      'email': new FormControl(null, Validators.email),
-      'password': new FormControl(null, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/))
+      'phonenumber': new FormControl(null, [Validators.required, Validators.pattern(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)]),
+      'birthdate': new FormControl(null, [Validators.required]),
+      'email': new FormControl(null, [Validators.email, Validators.required]),
+      'password': new FormControl(null, [Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/), Validators.required])
     })
   }
 
