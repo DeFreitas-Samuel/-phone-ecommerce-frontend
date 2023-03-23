@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../Models/User";
+import {UserRegistrationData} from "../../Models/UserRegistrationData";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../Services";
 
 @Component({
   selector: 'app-signup',
@@ -8,14 +9,14 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  user: User = new User();
+  user: UserRegistrationData = new UserRegistrationData();
   signUpForm: FormGroup;
 
-  constructor() {
+  constructor(private auth: AuthService) {
     this.signUpForm = new FormGroup({
       'firstname': new FormControl(null, Validators.required),
       'lastname': new FormControl(null, Validators.required),
-      'address1': new FormControl(null, Validators.required),
+      'address': new FormControl(null, Validators.required),
       'phonenumber': new FormControl(null, [Validators.required, Validators.pattern(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)]),
       'birthdate': new FormControl(null, [Validators.required]),
       'email': new FormControl(null, [Validators.email, Validators.required]),
@@ -28,7 +29,16 @@ export class SignupComponent implements OnInit {
   }
 
   signUp(){
-    console.log(this.signUpForm.value);
+    //console.log(this.signUpForm.value);
+    this.user.firstname = this.signUpForm.get('firstname')?.value;
+    this.user.lastname = this.signUpForm.get('lastname')?.value;
+    this.user.address = this.signUpForm.get('address')?.value;
+    this.user.contact_number = this.signUpForm.get('phonenumber')?.value;
+    this.user.birthdate = this.signUpForm.get('birthdate')?.value;
+    this.user.email = this.signUpForm.get('email')?.value;
+    this.user.password = this.signUpForm.get('password')?.value;
+
+    this.auth.signup(this.user.toDTO());
     this.signUpForm.reset();
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../Models/User";
+import {UserRegistrationData} from "../../Models/UserRegistrationData";
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,7 @@ import {User} from "../../Models/User";
 })
 export class LoginComponent implements OnInit {
 
-  user: User = new User();
+  user: UserRegistrationData = new UserRegistrationData();
 
   constructor() {
   }

@@ -23,13 +23,13 @@
     </div>
   </div>
   <div class="form-input">
-    <label for="address1">Address 1 *</label>
-    <input id="address1"
+    <label for="address">Address *</label>
+    <input id="address"
            type="text"
-           placeholder= "Enter your address 1"
-           formControlName= "address1">
+           placeholder= "Enter your address"
+           formControlName= "address">
 
-    <div  *ngIf="!signUpForm.get('address1')?.valid && signUpForm.get('address1')?.dirty"
+    <div  *ngIf="!signUpForm.get('address')?.valid && signUpForm.get('address')?.dirty"
           class="input-error">
       The Address 1 must not be empty
     </div>

@@ -8,6 +8,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import { SignupComponent } from './Components/signup/signup.component';
+import {AuthService} from "./Services";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,10 +22,11 @@ import { SignupComponent } from './Components/signup/signup.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [AuthService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
