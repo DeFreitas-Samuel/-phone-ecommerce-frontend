@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import {API_SIGNUP} from "../backend-routes";
+import {BackendRoutes} from "../backend-routes";
 import {UserRegistrationDataDTO} from "../DTOs/UserRegistrationDataDTO";
 import {Injectable} from "@angular/core";
-import {tap, catchError} from "rxjs";
 
 @Injectable()
 export class AuthService {
@@ -13,7 +12,7 @@ export class AuthService {
   public signup(User: UserRegistrationDataDTO){
 
     console.log(User)
-    this.http.post(API_SIGNUP,User)
+    this.http.post(BackendRoutes.API_SIGNUP, User)
       .subscribe({
           next: (response) => {
             console.log(response)
