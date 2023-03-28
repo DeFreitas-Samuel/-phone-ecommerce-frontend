@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import {BackendRoutes} from "../backend-routes";
+import {BACKEND_ROUTES} from "../backend.routes";
 import {UserRegistrationDataDTO} from "../DTOs/UserRegistrationDataDTO";
 import {Injectable} from "@angular/core";
+import {UserLoginDataDTO} from "../DTOs/UserLoginDataDTO";
 
 @Injectable()
 export class AuthService {
@@ -12,7 +13,7 @@ export class AuthService {
   public signup(User: UserRegistrationDataDTO){
 
     console.log(User)
-    this.http.post(BackendRoutes.API_SIGNUP, User)
+    this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.register}`, User)
       .subscribe({
           next: (response) => {
             console.log(response)
@@ -23,5 +24,45 @@ export class AuthService {
 
           }
       })
+  }
+  public Login(User: UserLoginDataDTO){
+/*    this.GetCSRFTokenFromLaravel()
+
+    console.log(User)*/
+    this.http.get( `${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.csrf}`, { withCredentials: true }  ).subscribe(
+      ()=>{
+
+          this.http.post( `${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.login}`, User, { withCredentials: true })
+            .subscribe(
+              (re)=>{console.log(re);}
+            )
+
+      }
+    )
+/*    this.http.post( `${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.login}`, User, { withCredentials: true })
+      .subscribe({
+        next: (response) => {
+          console.log(response)
+
+        },
+        error: (error) => {
+          console.error(error)
+
+        }
+      })*/
+  }
+
+  public GetCSRFTokenFromLaravel(){
+    this.http.get( `${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.csrf}`, { withCredentials: true }  )
+      .subscribe({
+        next: (response) => {
+          console.log(response)
+
+        },
+        error: (error) => {
+          console.error(error)
+
+        }
+      });
   }
 }

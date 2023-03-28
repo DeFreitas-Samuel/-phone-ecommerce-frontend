@@ -9,7 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import { SignupComponent } from './Components/signup/signup.component';
 import {AuthService} from "./Services";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http";
+import {CSRFInterceptor} from "./helpers/csrf.interceptor";
 
 @NgModule({
   declarations: [
@@ -24,9 +25,19 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientXsrfModule.withOptions({
+        cookieName: 'XSRF-TOKEN',
+        headerName: 'X-XSRF-TOKEN',
+      }),
+
   ],
-  providers: [AuthService, HttpClient],
+  providers: [AuthService, HttpClient,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: CSRFInterceptor ,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
