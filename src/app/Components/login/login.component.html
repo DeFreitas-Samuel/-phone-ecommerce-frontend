@@ -24,9 +24,11 @@
            [(ngModel)]="user.password"
            #password="ngModel"
            required>
-    <div [hidden]="password.valid || password.pristine" class="input-error">
+    <div *ngIf="password.valid || password.pristine" class="input-error">
       The password must not be empty
     </div>
   </div>
   <button type="submit" [disabled]="!loginForm.form.valid" mat-raised-button>Login</button>
+
+
 </form>

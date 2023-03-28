@@ -37,7 +37,8 @@ import {CSRFInterceptor} from "./helpers/csrf.interceptor";
     provide: HTTP_INTERCEPTORS,
     useClass: CSRFInterceptor ,
     multi: true
-  }],
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
