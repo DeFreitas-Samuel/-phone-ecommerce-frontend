@@ -24,7 +24,7 @@
            [(ngModel)]="user.password"
            #password="ngModel"
            required>
-    <div *ngIf="password.valid || password.pristine" class="input-error">
+    <div *ngIf="!password.valid && !password.pristine" class="input-error">
       The password must not be empty
     </div>
   </div>

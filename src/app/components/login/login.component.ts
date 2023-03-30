@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserRegistrationData} from "../../Models/UserRegistrationData";
-import {AuthService} from "../../Services";
-import {UserLoginData} from "../../Models/UserLoginData";
+import {UserRegistrationData} from "../../models/UserRegistrationData";
+import {AuthService} from "../../services";
+import {UserLoginData} from "../../models/UserLoginData";
 
 @Component({
   selector: 'app-login',
@@ -11,6 +11,8 @@ import {UserLoginData} from "../../Models/UserLoginData";
 export class LoginComponent implements OnInit {
 
   user: UserLoginData = new UserLoginData();
+
+  errorMessage: string = '';
 
   constructor(private auth: AuthService) {
   }

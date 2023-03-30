@@ -31,8 +31,8 @@ export class AuthService {
   public Login(User: UserLoginDataDTO) {
     this.GetCSRFTokenFromLaravel()
 
-    console.log(User)
-    this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.login}`, User, { withCredentials: true })
+
+    return this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.login}`, User, { withCredentials: true })
       .subscribe({
         next: (response) => {
           console.log(response)
