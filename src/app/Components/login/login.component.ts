@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserRegistrationData} from "../../models/UserRegistrationData";
 import {AuthService} from "../../services";
 import {UserLoginData} from "../../models/UserLoginData";
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -21,11 +22,16 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.auth.Login(this.user);
+    this.auth.Login(this.user).subscribe({
+      next: val => console.log(val),
+      error: (next:HttpErrorResponse) => this.errorMessage = next.error.error,
+      complete: () => console.log('Hallelujah')
+    });
   }
 
   logout(){
-    this.auth.Logout();
+    this.auth.Logout().subscribe();
   }
+
 
 }
