@@ -22,4 +22,8 @@ export class LoginComponent implements OnInit {
     this.auth.Login(this.user);
   }
 
+  logout(){
+    this.auth.Logout();
+  }
+
 }

@@ -3,6 +3,7 @@ import { BACKEND_ROUTES } from "../backend.routes";
 import { UserRegistrationDataDTO } from "../DTOs/UserRegistrationDataDTO";
 import { Injectable } from "@angular/core";
 import { UserLoginDataDTO } from "../DTOs/UserLoginDataDTO";
+import { switchMap, tap } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -14,48 +15,24 @@ export class AuthService {
 
   }
   public SignUp(User: UserRegistrationDataDTO) {
-    this.GetCSRFTokenFromLaravel()
-    console.log(User)
-    this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.register}`, User)
-      .subscribe({
-        next: (response) => {
-          console.log(response)
-
-        },
-        error: (error) => {
-          console.error(error)
-
-        }
-      })
+    return this.GetCSRFTokenFromLaravel().pipe(
+      tap(() => console.log(User)),
+      switchMap(() => this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.register}`, User, { withCredentials: true }))
+    )
   }
   public Login(User: UserLoginDataDTO) {
-    this.GetCSRFTokenFromLaravel()
+    return this.GetCSRFTokenFromLaravel().pipe(
+      tap(() => console.log(User)),
+      switchMap(() => this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.login}`, User, { withCredentials: true }))
+    )
 
-    console.log(User)
-    this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.login}`, User, { withCredentials: true })
-      .subscribe({
-        next: (response) => {
-          console.log(response)
-
-        },
-        error: (error) => {
-          console.error(error)
-
-        }
-      })
   }
 
-  public GetCSRFTokenFromLaravel() {
-    this.http.get(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.csrf}`, { withCredentials: true })
-      .subscribe({
-        next: (response) => {
-          console.log(response)
+  private GetCSRFTokenFromLaravel() {
+    return this.http.get(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.csrf}`, { withCredentials: true })
+  }
 
-        },
-        error: (error) => {
-          console.error(error)
-
-        }
-      });
+  public Logout() {
+    return this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.logout}`, { withCredentials: true })
   }
 }
