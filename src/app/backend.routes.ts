@@ -9,13 +9,11 @@ export const BACKEND_ROUTES = {
       register: '/api/register',
       csrf: '/sanctum/csrf-cookie',
   },
+  sandbox: {
+    testSession: '/session'
+  }
 
-/*  users: {
-    list: '/api/users',
-    create: '/api/users/create',
-    update: (id: number) => `/api/users/${id}/update`,
-    delete: (id: number) => `/api/users/${id}/delete`,
-  },*/
+
 };
 
 

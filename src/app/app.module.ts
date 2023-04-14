@@ -16,6 +16,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+import { SandBoxService } from './services/sandbox.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { HomeComponent } from './components/home/home.component';
       }),
 
   ],
-  providers: [AuthService, HttpClient,
+  providers: [AuthService, SandBoxService, HttpClient,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: CSRFInterceptor ,

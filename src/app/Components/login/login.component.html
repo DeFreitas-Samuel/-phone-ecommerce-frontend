@@ -27,6 +27,9 @@
     <div *ngIf="!password.pristine && !password.valid" class="input-error">
       The password must not be empty
     </div>
+    <div *ngIf="errorMessage" class="input-error">
+      {{errorMessage}}
+    </div>
   </div>
   <button type="submit" [disabled]="!loginForm.form.valid" mat-raised-button>Login</button>
 
