@@ -22,15 +22,14 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.auth.Login(this.user).subscribe({
-      next: val => console.log(val),
+    this.auth.login(this.user).subscribe({
       error: (next:HttpErrorResponse) => this.errorMessage = next.error.error,
       complete: () => console.log('Hallelujah')
     });
   }
 
   logout(){
-    this.auth.Logout().subscribe();
+    this.auth.logout().subscribe();
   }
 
 

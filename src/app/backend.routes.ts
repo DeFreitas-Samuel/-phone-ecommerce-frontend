@@ -4,13 +4,13 @@ const API_HOST = 'localhost:8000';
 export const BACKEND_ROUTES = {
   base: `http://${API_HOST}`,
   auth: {
-      login: '/login',
-      logout: '/logout',
+      login: '/api/login',
+      logout: '/api/logout',
       register: '/api/register',
       csrf: '/sanctum/csrf-cookie',
   },
   sandbox: {
-    testSession: '/session'
+    testSession: '/api/session'
   }
 
 

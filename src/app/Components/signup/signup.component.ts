@@ -11,6 +11,7 @@ import {AuthService} from "../../services";
 export class SignupComponent implements OnInit {
   user: UserRegistrationData = new UserRegistrationData();
   signUpForm: FormGroup;
+  errorMessage:string = '';
 
   constructor(private auth: AuthService) {
     this.signUpForm = new FormGroup({
@@ -38,7 +39,11 @@ export class SignupComponent implements OnInit {
     this.user.email = this.signUpForm.get('email')?.value;
     this.user.password = this.signUpForm.get('password')?.value;
 
-    this.auth.SignUp(this.user.toDTO());
+    const observer = {
+      error: (error:any) => this.errorMessage = error,
+      complete: () => console.log('Hallelujah')
+    };
+    this.auth.signUp(this.user.toDTO()).subscribe(observer);
     this.signUpForm.reset();
   }
 

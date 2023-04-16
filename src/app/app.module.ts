@@ -10,13 +10,13 @@ import {MatButtonModule} from "@angular/material/button";
 import { SignupComponent } from './components/signup/signup.component';
 import {AuthService} from "./services";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http";
-import {CSRFInterceptor} from "./helpers/csrf.interceptor";
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { SandBoxService } from './services/sandbox.service';
+import {AuthInterceptor} from "./helpers/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -37,18 +37,10 @@ import { SandBoxService } from './services/sandbox.service';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    HttpClientXsrfModule.withOptions({
-        cookieName: 'XSRF-TOKEN',
-        headerName: 'X-XSRF-TOKEN',
-      }),
 
   ],
   providers: [AuthService, SandBoxService, HttpClient,
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: CSRFInterceptor ,
-    multi: true
-  }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
