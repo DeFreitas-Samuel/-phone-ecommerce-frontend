@@ -3,27 +3,36 @@ import { BACKEND_ROUTES } from "../backend.routes";
 import { UserRegistrationDataDTO } from "../DTOs/UserRegistrationDataDTO";
 import { Injectable } from "@angular/core";
 import { UserLoginDataDTO } from "../DTOs/UserLoginDataDTO";
-import { switchMap, tap } from 'rxjs';
+import { switchMap, tap, EMPTY  } from 'rxjs';
 import {JsonTokenInterface} from "../Interfaces/jsonToken.interface";
+import {UserInterface} from "../Interfaces/user.interface";
 
 @Injectable()
 export class AuthService {
-
+  currentLoggedUser!: UserInterface;
 
   public constructor(private http: HttpClient) {
 
   }
   public signUp(User: UserRegistrationDataDTO) {
-    return this.getCSRFTokenFromLaravel().pipe(
-      tap(() => console.log(User)),
-      switchMap(() => this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.register}`, User, { withCredentials: true }))
-    )
+
+    return this.http.post<JsonTokenInterface>(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.register}`, User, { withCredentials: true })
+      .pipe(
+        tap((response) => {
+          if (response.access_token && response.user) {
+            localStorage.setItem('access_token', response.access_token);
+            this.currentLoggedUser = response.user;
+
+          }
+        }),
+        switchMap( () => {
+          console.log(this.currentLoggedUser)
+          return EMPTY;
+        })
+      )
   }
   public login(User: UserLoginDataDTO) {
-    // return this.getCSRFTokenFromLaravel().pipe(
-    //   tap(() => console.log(User)),
-    //   switchMap(() =>this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.login}`, User, { withCredentials: true }) )
-    // )
+
 
     return this.http.post<JsonTokenInterface>(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.login}`, User, { withCredentials: true })
       .pipe(
@@ -42,5 +51,10 @@ export class AuthService {
 
   public logout() {
     return this.http.post(`${BACKEND_ROUTES.base}${BACKEND_ROUTES.auth.logout}`, { withCredentials: true })
+      .pipe(
+        tap( () => {
+          localStorage.removeItem("access_token");
+        })
+    )
   }
 }
