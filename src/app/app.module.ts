@@ -17,6 +17,8 @@ import { UserDashboardComponent } from './components/user-dashboard/user-dashboa
 import { HomeComponent } from './components/home/home.component';
 import { SandBoxService } from './services/sandbox.service';
 import {AuthInterceptor} from "./helpers/auth.interceptor";
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {AuthInterceptor} from "./helpers/auth.interceptor";
     ProductDetailComponent,
     ProductItemComponent,
     UserDashboardComponent,
-    HomeComponent
+    HomeComponent,
+    PageNotFoundComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

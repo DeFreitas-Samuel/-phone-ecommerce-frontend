@@ -4,11 +4,13 @@ import { UserRegistrationDataDTO } from "../DTOs/UserRegistrationDataDTO";
 import { Injectable } from "@angular/core";
 import { UserLoginDataDTO } from "../DTOs/UserLoginDataDTO";
 import { switchMap, tap, EMPTY  } from 'rxjs';
-import {JsonTokenInterface} from "../Interfaces/jsonToken.interface";
-import {UserInterface} from "../Interfaces/user.interface";
+import {JsonTokenInterface} from "../interfaces/jsonToken.interface";
+import {UserInterface} from "../interfaces/user.interface";
 import {Router} from "@angular/router";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   currentLoggedUser!: UserInterface|null;
 
