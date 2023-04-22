@@ -5,10 +5,17 @@ import {inject} from "@angular/core";
 export const authGuard = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
+  let isLoggedIn:Boolean = false;
+  
+  authService.currentLoggedUser.subscribe(user=> {
+    isLoggedIn = !!user
+  })
 
 
-  console.log(authService.currentLoggedUser);
-  if (authService.isAuthenticated()) {
+
+
+  
+  if (isLoggedIn) {
     console.log('Authenticated')
     return true;
   }

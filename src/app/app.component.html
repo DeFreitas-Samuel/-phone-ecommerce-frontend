@@ -1,5 +1,8 @@
-<router-outlet></router-outlet>
-<a routerLink="login">Go to Login</a>
-<a routerLink="signup">Go to Sign Up</a>
+<a routerLink="login" *ngIf="!isLoggedIn">Go to Login</a>
+<a routerLink="signup" *ngIf="!isLoggedIn">Go to Sign Up</a>
 <a routerLink="home">Go to home</a>
 <a routerLink="dashboard" *ngIf="isLoggedIn" >Dashboard</a>
+<button *ngIf="isLoggedIn" (click)="logout()" mat-raised-button>Logout</button>
+
+<router-outlet></router-outlet>
+

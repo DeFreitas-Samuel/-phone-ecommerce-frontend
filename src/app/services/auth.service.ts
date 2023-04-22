@@ -3,7 +3,7 @@ import { BACKEND_ROUTES } from "../backend.routes";
 import { UserRegistrationDataDTO } from "../DTOs/UserRegistrationDataDTO";
 import { Injectable } from "@angular/core";
 import { UserLoginDataDTO } from "../DTOs/UserLoginDataDTO";
-import { tap, map } from 'rxjs';
+import { tap, map, BehaviorSubject } from 'rxjs';
 import { JsonTokenInterface } from "../interfaces/jsonToken.interface";
 import { UserInterface } from "../interfaces/user.interface";
 import { Router } from "@angular/router";
@@ -13,15 +13,21 @@ import { Inject } from '@angular/core';
 
 @Injectable()
 export class AuthService {
-  currentLoggedUser!: UserInterface|null;
 
   public constructor(private http: HttpClient, private router: Router, @Inject(ROUTES) private readonly routes: RouteType) {
 
   }
 
-  public isAuthenticated(): boolean {
-    return !!this.currentLoggedUser;
+  private _currentLoggedUser: BehaviorSubject<UserInterface|null> = new BehaviorSubject<UserInterface|null>(null);
+
+  get currentLoggedUser() {
+    return this._currentLoggedUser.asObservable();
   }
+
+  updateCurrentLoggedUser(user: UserInterface|null) {
+    this._currentLoggedUser.next(user);
+  }
+
 
   public signUp(User: UserRegistrationDataDTO) {
 
@@ -31,7 +37,7 @@ export class AuthService {
           console.log('This is the response: ',response);
           if (response.access_token) {
             localStorage.setItem('access_token', response.access_token);
-            this.currentLoggedUser = response.user;
+            this.updateCurrentLoggedUser(response.user);
             console.log('Access token set:', response.access_token);
             console.log('Current logged user set:', response.user);
           }
@@ -47,7 +53,7 @@ export class AuthService {
           console.log('This is the response: ',response);
           if (response.access_token) {
             localStorage.setItem('access_token', response.access_token);
-            this.currentLoggedUser = response.user;
+            this.updateCurrentLoggedUser(response.user);
             console.log('Access token set:', response.access_token);
             console.log('Current logged user set:', response.user);
           }
@@ -56,17 +62,6 @@ export class AuthService {
 
   }
 
-  private setAuthorizedUser() {
-    return (response:JsonTokenInterface) => {
-      console.log('This is the response: ',response);
-      if (response.access_token) {
-        localStorage.setItem('access_token', response.access_token);
-        this.currentLoggedUser = response.user;
-        console.log('Access token set:', response.access_token);
-        console.log('Current logged user set:', response.user);
-      }
-    };
-  }
 
 
   public logout() {
@@ -74,7 +69,7 @@ export class AuthService {
       .pipe(
         tap( () => {
           localStorage.removeItem("access_token");
-          this.currentLoggedUser = null;
+          this.updateCurrentLoggedUser(null);
         })
     )
   }
