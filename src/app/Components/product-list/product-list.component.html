@@ -1,1 +1,4 @@
-<p>product-list works!</p>
+<div *ngFor="let product of productsArray">
+  <app-product-item [id]="product.id" [name] = "product.name" [price]="product.price" [imageUrl] = "product.imageUrl" ></app-product-item>
+</div>
+

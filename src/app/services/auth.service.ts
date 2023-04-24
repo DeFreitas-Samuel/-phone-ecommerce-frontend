@@ -14,11 +14,12 @@ import { Inject } from '@angular/core';
 @Injectable()
 export class AuthService {
 
+  private _currentLoggedUser: BehaviorSubject<UserInterface|null> = new BehaviorSubject<UserInterface|null>(null);
   public constructor(private http: HttpClient, private router: Router, @Inject(ROUTES) private readonly routes: RouteType) {
 
   }
 
-  private _currentLoggedUser: BehaviorSubject<UserInterface|null> = new BehaviorSubject<UserInterface|null>(null);
+
 
   get currentLoggedUser() {
     return this._currentLoggedUser.asObservable();
@@ -34,7 +35,6 @@ export class AuthService {
     return this.http.post<JsonTokenInterface>(`${this.routes.base}${this.routes.auth.register}`, User, { withCredentials: true })
       .pipe(
         tap((response: JsonTokenInterface) => {
-          console.log('This is the response: ',response);
           if (response.access_token) {
             localStorage.setItem('access_token', response.access_token);
             this.updateCurrentLoggedUser(response.user);
@@ -50,12 +50,9 @@ export class AuthService {
     return this.http.post<JsonTokenInterface>(`${this.routes.base}${this.routes.auth.login}`, User, { withCredentials: true })
       .pipe(
         tap((response: JsonTokenInterface) => {
-          console.log('This is the response: ',response);
           if (response.access_token) {
             localStorage.setItem('access_token', response.access_token);
             this.updateCurrentLoggedUser(response.user);
-            console.log('Access token set:', response.access_token);
-            console.log('Current logged user set:', response.user);
           }
         })
       );

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-product-item',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductItemComponent implements OnInit {
 
+  @Input() id!: number;
+  @Input()  name: string ="";
+  @Input()  price: string ="";
+  @Input() imageUrl: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

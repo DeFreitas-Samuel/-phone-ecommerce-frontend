@@ -11,6 +11,9 @@ export const BACKEND_ROUTES = {
   },
   sandbox: {
     testSession: '/api/session'
+  },
+  products: {
+    products: '/api/products'
   }
 
 

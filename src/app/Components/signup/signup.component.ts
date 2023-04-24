@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {UserRegistrationData} from "../../models/UserRegistrationData";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services";
+import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -13,12 +15,12 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   errorMessage:string = '';
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private router: Router) {
     this.signUpForm = new FormGroup({
       'firstname': new FormControl(null, Validators.required),
       'lastname': new FormControl(null, Validators.required),
       'address': new FormControl(null, Validators.required),
-      'phonenumber': new FormControl(null, [Validators.required, Validators.pattern(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)]),
+      'phonenumber': new FormControl(null, [Validators.required, Validators.pattern(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/)]),
       'birthdate': new FormControl(null, [Validators.required]),
       'email': new FormControl(null, [Validators.email, Validators.required]),
       'password': new FormControl(null,  /*[Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),*/ Validators.required)
@@ -40,11 +42,10 @@ export class SignupComponent implements OnInit {
     this.user.password = this.signUpForm.get('password')?.value;
 
     const observer = {
-      error: (error:any) => this.errorMessage = error,
-      complete: () => console.log('Hallelujah')
+      error: (next:HttpErrorResponse) => this.errorMessage = next.error.error,
+      complete: () => this.router.navigate(['home'])
     };
     this.auth.signUp(this.user.toDTO()).subscribe(observer);
-    this.signUpForm.reset();
   }
 
 }

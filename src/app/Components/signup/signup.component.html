@@ -82,5 +82,8 @@
       The password must not be empty, and must be at least 8 characters long
     </div>
   </div>
+  <div *ngIf="errorMessage" class="input-error">
+    {{errorMessage}}
+  </div>
   <button type="submit" [disabled]="!signUpForm.valid" mat-raised-button>Create Account</button>
 </form>

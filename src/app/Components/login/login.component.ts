@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.user).subscribe({
       error: (next:HttpErrorResponse) => this.errorMessage = next.error.error,
       complete: () => {
-        console.log('Hallelujah!')
         this.router.navigate(['home']);
       }
     });

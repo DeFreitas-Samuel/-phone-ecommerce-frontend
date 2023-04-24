@@ -19,6 +19,7 @@ import { SandBoxService } from './services/sandbox.service';
 import {AuthInterceptor} from "./helpers/auth.interceptor";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {ProductsService} from "./services/products.service";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatButtonModule,
 
   ],
-  providers: [AuthService, SandBoxService, HttpClient,
+  providers: [AuthService, SandBoxService, HttpClient, ProductsService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
