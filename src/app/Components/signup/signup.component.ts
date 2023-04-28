@@ -32,7 +32,6 @@ export class SignupComponent implements OnInit {
   }
 
   signUp(){
-    //console.log(this.signUpForm.value);
     this.user.firstname = this.signUpForm.get('firstname')?.value;
     this.user.lastname = this.signUpForm.get('lastname')?.value;
     this.user.address = this.signUpForm.get('address')?.value;

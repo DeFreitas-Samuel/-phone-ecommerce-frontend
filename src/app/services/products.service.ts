@@ -2,10 +2,12 @@ import {Inject, Injectable, OnInit} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {ROUTES} from "../token/routes.token";
 import {RouteType} from "../backend.routes";
-import {BehaviorSubject, catchError, EMPTY, Observable} from "rxjs";
+import {BehaviorSubject, catchError, EMPTY} from "rxjs";
 import {Product} from "../interfaces/product.interface";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductsService {
   //TODO retrieve all the products from the api
   //TODO look for a way to filter by brand and category

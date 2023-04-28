@@ -11,7 +11,9 @@ import { ROUTES } from 'src/app/token/routes.token';
 import { RouteType } from 'src/app/backend.routes';
 import { Inject } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 
   private _currentLoggedUser: BehaviorSubject<UserInterface|null> = new BehaviorSubject<UserInterface|null>(null);
@@ -19,6 +21,9 @@ export class AuthService {
 
   }
 
+  get currentLoggedUserSnapshot(){
+    return this._currentLoggedUser.getValue();
+  }
 
 
   get currentLoggedUser() {

@@ -2,7 +2,9 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BACKEND_ROUTES } from "../backend.routes";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SandBoxService {
 
     constructor(private http: HttpClient) {
