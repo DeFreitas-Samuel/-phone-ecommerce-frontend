@@ -1,1 +1,13 @@
-<p>product-detail works!</p>
+<br>
+<img src="{{product.imageUrl}}" alt="Image of the product">
+
+<p>{{product.name}}</p>
+<br>
+<p>{{product.price}}$</p>
+<br>
+<p>{{product.description}}$</p>
+<br>
+<p>{{product.specifications}}$</p>
+
+
+<button (click)="onAddToCart()" mat-raised-button>Add to cart</button>

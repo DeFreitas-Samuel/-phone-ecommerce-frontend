@@ -4,4 +4,6 @@
 <br>
 <p>{{price}}$</p>
 
-<button (click)="onPurchase()" mat-raised-button>Buy</button>
+<a [routerLink]="['/product', id]">See Details</a>
+
+<button (click)="onAddToCart()" mat-raised-button>Add to cart</button>

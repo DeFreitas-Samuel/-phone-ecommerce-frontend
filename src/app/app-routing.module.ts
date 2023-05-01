@@ -7,6 +7,7 @@ import {authGuard} from "./auth/auth.guard";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {ProductListComponent} from "./components/product-list/product-list.component";
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "dashboard", component: DashboardComponent, title: "Dashboard", canActivate:[authGuard]},
   {path: "not-found", component: PageNotFoundComponent, title:"Not Found"},
   {path: "products", component: ProductListComponent},
+  {path: "product/:id", component: ProductDetailComponent},
   {path: "", redirectTo:"home", pathMatch:"full"},
   {path: "**", redirectTo:"not-found"}
 ];

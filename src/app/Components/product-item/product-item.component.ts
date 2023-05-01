@@ -20,21 +20,32 @@ export class ProductItemComponent implements OnInit {
 
   }
 
-  onPurchase(){
-    const order: Order = {
+
+  onAddToCart(){
+      const order: Order = {
       product_id: this.id,
       user_id: this.authService.currentLoggedUserSnapshot?.id ?? -1,
       quantity: 1,
       total:  Number(this.price)
-
-    }
-    if(order.user_id !== -1){
-      this.purchaseService.purchase(order).subscribe(console.log)
-    }
-    else {
-      console.error("You have to be logged in to buy!");
-    }
+      }
+      console.log(order);
 
   }
+  // onPurchase(){
+  //   const order: Order = {
+  //     product_id: this.id,
+  //     user_id: this.authService.currentLoggedUserSnapshot?.id ?? -1,
+  //     quantity: 1,
+  //     total:  Number(this.price)
+
+  //   }
+  //   if(order.user_id !== -1){
+  //     this.purchaseService.purchase(order).subscribe(console.log)
+  //   }
+  //   else {
+  //     console.error("You have to be logged in to buy!");
+  //   }
+
+  // }
 
 }

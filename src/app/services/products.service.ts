@@ -23,23 +23,21 @@ export class ProductsService {
   constructor(private http: HttpClient, @Inject(ROUTES) private readonly routes: RouteType) { }
 
   getProducts()/*Observable<Product[]|null>*/ {
-    if (this.products !== null) {
 
-      this.productsSubject.next(this.products);
-
-    } else {
-      this.http.get<Product[]>(this.routes.base + this.routes.products.products).pipe(
+    return this.http.get<Product[]>(this.routes.base + this.routes.products.products).pipe(
         catchError( err => {
           console.log(err);
           return EMPTY;
         })
-      ).subscribe(products => {
-        this.products = products;
-        this.productsSubject.next(products);
-      });
-    }
-    return this.productsSubject.asObservable();
+    )
   }
-
+  getOneProduct(id: string) {
+    return this.http.get<Product>(this.routes.base + this.routes.products.product + `/${id}`).pipe(
+      catchError( err => {
+        console.log(err);
+        return EMPTY;
+      })
+  )
+  }
 
 }

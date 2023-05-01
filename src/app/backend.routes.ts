@@ -13,7 +13,8 @@ export const BACKEND_ROUTES = {
     testSession: '/api/session'
   },
   products: {
-    products: '/api/products'
+    products: '/api/products',
+    product: '/api/product'
   },
   purchase: {
     purchase: '/api/purchase'
