@@ -22,13 +22,13 @@ export class ProductItemComponent implements OnInit {
 
   onPurchase(){
     const order: Order = {
-      id_product: this.id,
-      id_user: this.authService.currentLoggedUserSnapshot?.id ?? -1,
+      product_id: this.id,
+      user_id: this.authService.currentLoggedUserSnapshot?.id ?? -1,
       quantity: 1,
       total:  Number(this.price)
 
     }
-    if(order.id_user !== -1){
+    if(order.user_id !== -1){
       this.purchaseService.purchase(order).subscribe(console.log)
     }
     else {

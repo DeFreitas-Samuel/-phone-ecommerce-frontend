@@ -1,6 +1,6 @@
 export interface Order {
-  id_product: number;
-  id_user: number;
+  product_id: number;
+  user_id: number;
   quantity: number;
   total: number;
 }
