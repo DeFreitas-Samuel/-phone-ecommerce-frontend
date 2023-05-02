@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/interfaces/product.interface';
 import { ProductsService } from 'src/app/services';
 
@@ -10,19 +11,18 @@ import { ProductsService } from 'src/app/services';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product!: Product
+  product$!: Observable<Product>
 
   constructor(private route: ActivatedRoute, private productService: ProductsService) { }
 
   ngOnInit(): void {
     const productId = this.route.snapshot.params['id']
-    this.productService.getOneProduct(productId).subscribe( productFetched =>
-      this.product = productFetched
-    )
+    this.product$ = this.productService.getOneProduct(productId);
+
 
   }
   onAddToCart(){
-    console.log(this.product)
+    console.log(this.product$)
   }
 
 }

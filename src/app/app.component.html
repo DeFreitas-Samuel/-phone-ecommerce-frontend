@@ -3,6 +3,7 @@
 <a routerLink="home">Go to home</a>
 <a routerLink="dashboard" *ngIf="isLoggedIn" >Dashboard</a>
 <a routerLink="products" >Products</a>
+<a routerLink="cart">My Cart</a>
 <button *ngIf="isLoggedIn" (click)="logout()" mat-raised-button>Logout</button>
 
 <router-outlet></router-outlet>

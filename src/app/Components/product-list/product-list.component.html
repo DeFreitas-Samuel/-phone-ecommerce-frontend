@@ -1,4 +1,9 @@
-<div *ngFor="let product of productsArray">
-  <app-product-item [id]="product.id" [name] = "product.name" [price]="product.price" [imageUrl] = "product.imageUrl" ></app-product-item>
+<div *ngIf="productsArray$ | async as productsArray; else loading">
+  <div *ngFor="let product of productsArray">
+    <app-product-item [id]="product.id" [name] = "product.name" [price]="product.price" [imageUrl] = "product.imageUrl" ></app-product-item>
+  </div>
 </div>
 
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

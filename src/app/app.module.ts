@@ -21,7 +21,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import {AuthInterceptor} from "./helpers/auth.interceptor";
-import {AuthService, ProductsService, SandBoxService, PurchaseService} from "./services";
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 

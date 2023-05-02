@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {ProductListComponent} from "./components/product-list/product-list.component";
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: "not-found", component: PageNotFoundComponent, title:"Not Found"},
   {path: "products", component: ProductListComponent},
   {path: "product/:id", component: ProductDetailComponent},
+  {path: "cart", component:ShoppingCartComponent},
   {path: "", redirectTo:"home", pathMatch:"full"},
   {path: "**", redirectTo:"not-found"}
 ];
