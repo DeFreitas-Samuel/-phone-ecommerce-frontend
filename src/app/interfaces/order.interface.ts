@@ -1,6 +1,11 @@
+import { CartItem } from "./cart-item.interface";
+
+
 export interface Order {
-  product_id: number;
   user_id: number;
-  quantity: number;
+  products: CartItem[];
   total: number;
+  payment_method_id: number;
+  shipping_address: string;
 }
+

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AuthService, PurchaseService} from "../../services";
+import {AuthService, CartService, PurchaseService} from "../../services";
 import {Order} from "../../interfaces/order.interface";
+import { CartItem } from 'src/app/interfaces/cart-item.interface';
 
 @Component({
   selector: 'app-product-item',
@@ -13,39 +14,29 @@ export class ProductItemComponent implements OnInit {
   @Input()  name: string ="";
   @Input()  price: string ="";
   @Input() imageUrl: string = "";
+  quantity:number = 1;
+  cartCopy: CartItem[] = [];
 
-  constructor(private purchaseService: PurchaseService, private authService: AuthService) { }
+  constructor(private cartService: CartService ) { }
 
   ngOnInit(): void {
 
   }
 
 
-  onAddToCart(){
-      const order: Order = {
-      product_id: this.id,
-      user_id: this.authService.currentLoggedUserSnapshot?.id ?? -1,
-      quantity: 1,
-      total:  Number(this.price)
+  onAddToCartFromList(){
+
+      const newCartItem:CartItem = {
+        product_id: this.id,
+        quantity: 1,
+        totalPrice: Number(this.price)
       }
-      console.log(order);
-
+      this.cartService.addElementToCart(newCartItem);
+      this.cartService.getCart.subscribe( cart =>
+        this.cartCopy = cart
+      )
+      console.log(this.cartCopy);
   }
-  // onPurchase(){
-  //   const order: Order = {
-  //     product_id: this.id,
-  //     user_id: this.authService.currentLoggedUserSnapshot?.id ?? -1,
-  //     quantity: 1,
-  //     total:  Number(this.price)
 
-  //   }
-  //   if(order.user_id !== -1){
-  //     this.purchaseService.purchase(order).subscribe(console.log)
-  //   }
-  //   else {
-  //     console.error("You have to be logged in to buy!");
-  //   }
-
-  // }
 
 }
