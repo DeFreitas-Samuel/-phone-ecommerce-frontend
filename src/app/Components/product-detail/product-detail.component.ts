@@ -11,7 +11,8 @@ import { AuthService, ProductsService, PurchaseService } from 'src/app/services'
 })
 export class ProductDetailComponent implements OnInit {
 
-  product$!: Observable<Product>
+  product$!: Observable<Product>;
+  quantity: number = 1;
 
   constructor(private route: ActivatedRoute, private productService: ProductsService, private purchaseService: PurchaseService, private authService: AuthService) { }
 
@@ -23,6 +24,17 @@ export class ProductDetailComponent implements OnInit {
   }
   onAddToCart(){
     console.log(this.product$)
+  }
+
+  onAddQuantity(){
+    this.quantity++;
+  }
+
+  onSubstractQuantity(){
+    if(this.quantity > 1){
+      this.quantity--;
+    }
+    
   }
 
     // onBuyNow(){
