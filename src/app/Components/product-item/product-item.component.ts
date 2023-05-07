@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AuthService, CartService, PurchaseService} from "../../services";
 import {Order} from "../../interfaces/order.interface";
 import { CartItem } from 'src/app/interfaces/cart-item.interface';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-item',
@@ -15,9 +16,9 @@ export class ProductItemComponent implements OnInit {
   @Input()  price: string ="";
   @Input() imageUrl: string = "";
   quantity:number = 1;
-  cartCopy: CartItem[] = [];
 
-  constructor(private cartService: CartService ) { }
+
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -28,14 +29,14 @@ export class ProductItemComponent implements OnInit {
 
       const newCartItem:CartItem = {
         product_id: this.id,
+        name: this.name,
         quantity: 1,
-        totalPrice: Number(this.price)
+        totalPrice: Number(this.price),
+        imageUrl: this.imageUrl,
+        unitPrice: Number(this.price)
       }
       this.cartService.addElementToCart(newCartItem);
-      this.cartService.getCart.subscribe( cart =>
-        this.cartCopy = cart
-      )
-      console.log(this.cartCopy);
+      this.router.navigate(['cart'])
   }
 
 

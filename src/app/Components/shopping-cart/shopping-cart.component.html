@@ -1,1 +1,21 @@
-<p>shopping-cart works!</p>
+<div *ngIf="shoppingCart$|async as shoppingCart; else loading">
+
+  <div *ngIf="shoppingCart.length !== 0; else emptyCart">
+    <div *ngFor="let cartItem of shoppingCart ">
+      <img src="{{cartItem.imageUrl}}" alt="image of the product" height="150" width="150">
+      <p>Name: {{cartItem.name}}</p>
+      <p>Unit Price: {{cartItem.unitPrice}}</p>
+      <p>Total price: {{cartItem.totalPrice}}</p>
+      <p>Quantity: {{cartItem.quantity}}</p>
+      <hr>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <p>Your cart is empty!!!</p>
+  </ng-template>
+
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p></ng-template>

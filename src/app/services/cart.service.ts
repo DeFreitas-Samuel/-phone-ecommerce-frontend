@@ -12,13 +12,24 @@ export class CartService {
 
   constructor() { }
 
-  addElementToCart(cartItem: CartItem){
-    this.cart.push(cartItem);
+  addElementToCart(itemToBeAdded: CartItem){
+    const index = this.cart.findIndex(e => e.product_id === itemToBeAdded.product_id )
+
+    if(index !== -1 ){
+      const cartItemToBeModified = this.cart[index];
+      cartItemToBeModified.quantity += itemToBeAdded.quantity;
+      cartItemToBeModified.totalPrice += itemToBeAdded.totalPrice;
+
+    }
+    else{
+      this.cart.push(itemToBeAdded);
+    }
+
     this.cartSubject.next(this.cart);
   }
 
   get getCart(){
     return this.cartSubject.asObservable();
   }
-  
+
 }
