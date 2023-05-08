@@ -14,7 +14,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from "@angular/common/http";
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { ProductItemComponent } from './components/product-item/product-item.component';
+import { ProductItemComponent } from './components/product-list/product-item/product-item.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -22,6 +22,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import {AuthInterceptor} from "./helpers/auth.interceptor";
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShoppingCartItemComponent } from './components/shopping-cart/shopping-cart-item/shopping-cart-item.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     HomeComponent,
     PageNotFoundComponent,
     DashboardComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ShoppingCartItemComponent
   ],
   imports: [
     BrowserModule,

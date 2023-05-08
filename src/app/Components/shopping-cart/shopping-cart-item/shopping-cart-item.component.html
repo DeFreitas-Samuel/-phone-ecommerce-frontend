@@ -1,0 +1,16 @@
+<img src="{{cartItem.imageUrl}}" alt="image of the product" height="150" width="150">
+<p>Name: {{cartItem.name}}</p>
+<p>Unit Price: {{cartItem.unitPrice}} &</p>
+<p>Total price: {{cartItem.totalPrice.toFixed(2)}} $</p>
+<p>Quantity: {{cartItem.quantity}}</p>
+
+<div class="quantity-selector">
+  <button (click)="onDeleteItem()" mat-raised-button>Delete</button>
+  <button (click)="onSubtractQuantity()" >-</button>
+  <p>{{cartItem.quantity}}</p>
+  <button (click)="onAddQuantity()">+</button>
+</div>
+
+
+
+<hr>

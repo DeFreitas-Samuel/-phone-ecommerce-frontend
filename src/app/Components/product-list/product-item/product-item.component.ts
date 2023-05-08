@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AuthService, CartService, PurchaseService} from "../../services";
-import {Order} from "../../interfaces/order.interface";
+import {AuthService, CartService, PurchaseService} from "../../../services";
+import {Order} from "../../../interfaces/order.interface";
 import { CartItem } from 'src/app/interfaces/cart-item.interface';
 import {Router} from "@angular/router";
 

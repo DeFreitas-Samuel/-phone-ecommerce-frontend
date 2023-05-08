@@ -2,13 +2,9 @@
 
   <div *ngIf="shoppingCart.length !== 0; else emptyCart">
     <div *ngFor="let cartItem of shoppingCart ">
-      <img src="{{cartItem.imageUrl}}" alt="image of the product" height="150" width="150">
-      <p>Name: {{cartItem.name}}</p>
-      <p>Unit Price: {{cartItem.unitPrice}}</p>
-      <p>Total price: {{cartItem.totalPrice}}</p>
-      <p>Quantity: {{cartItem.quantity}}</p>
-      <hr>
+      <app-shopping-cart-item [cartItem]="cartItem"></app-shopping-cart-item>
     </div>
+    <button mat-raised-button>Proceed to Checkout</button>
   </div>
 
   <ng-template #emptyCart>
