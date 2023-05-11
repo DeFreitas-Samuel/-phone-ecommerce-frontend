@@ -1,7 +1,7 @@
 <img src="{{cartItem.imageUrl}}" alt="image of the product" height="150" width="150">
 <p>Name: {{cartItem.name}}</p>
-<p>Unit Price: {{cartItem.unitPrice}} &</p>
-<p>Total price: {{cartItem.totalPrice.toFixed(2)}} $</p>
+<p>Unit Price: {{cartItem.unitPrice | currency:'USD'}}</p>
+<p>Total price: {{cartItem.totalPrice | currency:'USD'}}</p>
 <p>Quantity: {{cartItem.quantity}}</p>
 
 <div class="quantity-selector">

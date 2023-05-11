@@ -2,7 +2,7 @@
 
 <p>{{name}}</p>
 <br>
-<p>{{price}}$</p>
+<p>{{price | currency:'USD'}}</p>
 
 <a [routerLink]="['/product', id]">See Details</a>
 
