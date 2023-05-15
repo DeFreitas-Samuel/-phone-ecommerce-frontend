@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-credit-card',
@@ -8,12 +8,15 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class CreditCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
-  cardHolderName = new FormControl(null, [Validators.required]);
-  cardNumber = new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{16}$')]);
-  expirationDate = new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{4}$')]);
-  cvv = new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{4}$')]);
+  creditCardForm = this.formBuilder.group({
+    cardHolderName: [null, Validators.required],
+    cardNumber: [null, [Validators.required, Validators.pattern('^[0-9]{16}$')]],
+    expirationDate: [null, [Validators.required, Validators.pattern('^[0-9]{4}$')]],
+    cvv: [null, [Validators.required, Validators.pattern('^[0-9]{4}$')]]
+  })
+
 
   ngOnInit(): void {
   }
