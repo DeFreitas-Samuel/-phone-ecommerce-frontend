@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserRegistrationData} from "../../models/UserRegistrationData";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -12,20 +12,16 @@ import {Router} from "@angular/router";
 })
 export class SignupComponent implements OnInit {
   user: UserRegistrationData = new UserRegistrationData();
-  signUpForm: FormGroup;
+  signUpForm: FormGroup = this.formBuilder.group({
+    firstname: [null, Validators.required],
+    lastname: [null, Validators.required],
+    birthdate: [null, [Validators.required]],
+    email: [null, [Validators.email, Validators.required]],
+    password: [null,  /*[Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),*/ Validators.required]
+  })
   errorMessage:string = '';
 
-  constructor(private auth: AuthService, private router: Router) {
-    this.signUpForm = new FormGroup({
-      'firstname': new FormControl(null, Validators.required),
-      'lastname': new FormControl(null, Validators.required),
-      'address': new FormControl(null, Validators.required),
-      'phonenumber': new FormControl(null, [Validators.required, Validators.pattern(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/)]),
-      'birthdate': new FormControl(null, [Validators.required]),
-      'email': new FormControl(null, [Validators.email, Validators.required]),
-      'password': new FormControl(null,  /*[Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),*/ Validators.required)
-    })
-  }
+  constructor(private auth: AuthService, private router: Router, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
 
@@ -34,8 +30,6 @@ export class SignupComponent implements OnInit {
   signUp(){
     this.user.firstname = this.signUpForm.get('firstname')?.value;
     this.user.lastname = this.signUpForm.get('lastname')?.value;
-    this.user.address = this.signUpForm.get('address')?.value;
-    this.user.contact_number = this.signUpForm.get('phonenumber')?.value;
     this.user.birthdate = this.signUpForm.get('birthdate')?.value;
     this.user.email = this.signUpForm.get('email')?.value;
     this.user.password = this.signUpForm.get('password')?.value;

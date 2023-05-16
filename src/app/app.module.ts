@@ -25,7 +25,6 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { ShoppingCartItemComponent } from './components/shopping-cart/shopping-cart-item/shopping-cart-item.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CreditCardComponent } from './components/checkout/credit-card/credit-card.component';
-import { ShippingAdressComponent } from './components/checkout/shipping-adress/shipping-adress.component';
 import { ShippingAddressComponent } from './components/checkout/shipping-address/shipping-address.component';
 import { OrderSummaryComponent } from './components/checkout/order-summary/order-summary.component';
 
@@ -46,7 +45,6 @@ import { OrderSummaryComponent } from './components/checkout/order-summary/order
     ShoppingCartItemComponent,
     CheckoutComponent,
     CreditCardComponent,
-    ShippingAdressComponent,
     ShippingAddressComponent,
     OrderSummaryComponent
   ],
