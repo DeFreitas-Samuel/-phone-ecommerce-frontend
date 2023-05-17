@@ -1,1 +1,46 @@
-<p>credit-card-form works!</p>
+<form [formGroup]="creditCardForm">
+  <div class="form-input">
+    <label for="cardHolderName">Cardholder Name *</label>
+    <input id="cardHolderName"
+           type="text"
+           placeholder="Enter the name in the card"
+           formControlName= "cardHolderName">
+    <div  *ngIf="!creditCardForm.get('cardHolderName')?.valid && creditCardForm.get('cardHolderName')?.dirty"
+          class="input-error">
+      The name in the card field must not be empty
+    </div>
+  </div>
+  <div class="form-input">
+    <label for="cardNumber">Card number *</label>
+    <input id="cardNumber"
+           type="text"
+           placeholder="Enter your card number"
+           formControlName= "cardNumber">
+    <div  *ngIf="!creditCardForm.get('cardNumber')?.valid && creditCardForm.get('cardNumber')?.dirty"
+          class="input-error">
+      The card number must not be empty
+    </div>
+  </div>
+  <div class="form-input">
+    <label for="expireDate">Date of expiration *</label>
+    <input id="expireDate"
+           type="text"
+           placeholder="MM/YY"
+           formControlName= "expireDate">
+    <div  *ngIf="!creditCardForm.get('expireDate')?.valid && creditCardForm.get('expireDate')?.dirty"
+          class="input-error">
+      The date of expiration must not be empty
+    </div>
+  </div>
+  <div class="form-input">
+    <label for="cvv">CVV *</label>
+    <input id="cvv"
+           type="text"
+           placeholder="Enter the card's cvv"
+           formControlName= "cvv">
+    <div  *ngIf="!creditCardForm.get('cvv')?.valid && creditCardForm.get('cvv')?.dirty"
+          class="input-error">
+      The cvv must not be empty
+    </div>
+  </div>
+</form>

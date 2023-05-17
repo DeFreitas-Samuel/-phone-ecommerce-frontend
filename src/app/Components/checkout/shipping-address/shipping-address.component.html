@@ -1,1 +1,57 @@
-<p>shipping-address works!</p>
+<form [formGroup]="shippingAddressForm">
+  <div class="form-input">
+    <label for="city">Address *</label>
+    <input id="address"
+           type="text"
+           placeholder="Enter your address"
+           formControlName= "address">
+    <div  *ngIf="!shippingAddressForm.get('address')?.valid && shippingAddressForm.get('address')?.dirty"
+          class="input-error">
+      The address must not be empty
+    </div>
+  </div>
+  <div class="form-input">
+    <label for="city">City *</label>
+    <input id="city"
+           type="text"
+           placeholder="Enter your city"
+           formControlName= "city">
+    <div  *ngIf="!shippingAddressForm.get('city')?.valid && shippingAddressForm.get('city')?.dirty"
+          class="input-error">
+      The city must not be empty
+    </div>
+  </div>
+  <div class="form-input">
+    <label for="state">State *</label>
+    <input id="state"
+           type="text"
+           placeholder="Enter your state"
+           formControlName= "state">
+    <div  *ngIf="!shippingAddressForm.get('state')?.valid && shippingAddressForm.get('state')?.dirty"
+          class="input-error">
+      The state must not be empty
+    </div>
+  </div>
+  <div class="form-input">
+    <label for="phoneNumber">Phone Number *</label>
+    <input id="phoneNumber"
+           type="text"
+           placeholder="Enter your phone number"
+           formControlName= "phoneNumber">
+    <div  *ngIf="!shippingAddressForm.get('phoneNumber')?.valid && shippingAddressForm.get('phoneNumber')?.dirty"
+          class="input-error">
+      The phone number must not be empty and be a valid phone number
+    </div>
+  </div>
+  <div class="form-input">
+    <label for="zipCode">Zip Code *</label>
+    <input id="zipCode"
+           type="text"
+           placeholder="Enter your Zip Code"
+           formControlName= "zipCode">
+    <div  *ngIf="!shippingAddressForm.get('zipCode')?.valid && shippingAddressForm.get('zipCode')?.dirty"
+          class="input-error">
+      The zip code must not be empty and be a valid 5 digits zip code
+    </div>
+  </div>
+</form>
