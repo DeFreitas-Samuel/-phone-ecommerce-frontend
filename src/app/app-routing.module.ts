@@ -9,7 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {ProductListComponent} from "./components/product-list/product-list.component";
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import {CheckoutComponent} from "./components/checkout/checkout.component";
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -21,7 +21,6 @@ const routes: Routes = [
   {path: "products", component: ProductListComponent},
   {path: "product/:id", component: ProductDetailComponent},
   {path: "cart", component:ShoppingCartComponent},
-  {path: "checkout", component:CheckoutComponent},
   {path: "checkout", component:CheckoutComponent},
   {path: "", redirectTo:"home", pathMatch:"full"},
   {path: "**", redirectTo:"not-found"}

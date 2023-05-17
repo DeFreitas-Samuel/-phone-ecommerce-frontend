@@ -1,10 +1,16 @@
 <div *ngIf="shoppingCart$|async as shoppingCart; else loading">
 
   <div *ngIf="shoppingCart.length !== 0; else emptyCart">
+
     <div *ngFor="let cartItem of shoppingCart ">
       <app-shopping-cart-item [cartItem]="cartItem"></app-shopping-cart-item>
     </div>
+<<<<<<< HEAD
     <button mat-raised-button (click)="onCheckOut()">Proceed to Checkout</button>
+=======
+    
+    <button (click)="onCheckout()" mat-raised-button>Proceed to Checkout</button>
+>>>>>>> 1008225ae1616d4094fd4762411634622d0f546a
   </div>
 
   <ng-template #emptyCart>
