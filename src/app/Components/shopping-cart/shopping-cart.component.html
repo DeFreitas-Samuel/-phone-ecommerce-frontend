@@ -5,9 +5,9 @@
     <div *ngFor="let cartItem of shoppingCart ">
       <app-shopping-cart-item [cartItem]="cartItem"></app-shopping-cart-item>
     </div>
-    
+
     <button (click)="onCheckout()" mat-raised-button>Proceed to Checkout</button>
-  </div>
+    </div>
 
   <ng-template #emptyCart>
     <p>Your cart is empty!!!</p>

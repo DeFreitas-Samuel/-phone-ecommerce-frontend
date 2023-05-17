@@ -1,0 +1,12 @@
+.form-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  input {
+    border-radius: 5px;
+    border-color: gray;
+  }
+}
+form {
+  width: 25vw;
+}

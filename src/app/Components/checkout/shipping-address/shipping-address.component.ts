@@ -9,11 +9,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ShippingAddressComponent implements OnInit {
 
   shippingAddressForm = this.formBuilder.group({
-    address1: [null, [Validators.required]],
+    address: [null, [Validators.required]],
     city: [null, [Validators.required]],
     state: [null, [Validators.required]],
-    phone: [null, [Validators.required]],
-    zipCode: [null, [Validators.required]]
+    phoneNumber: [null, [Validators.required, Validators.pattern('[0-9]{10}')]],
+    zipCode: [null, [Validators.required, Validators.pattern('[0-9]{5}')]]
   })
 
   constructor(private formBuilder: FormBuilder) { }

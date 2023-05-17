@@ -24,7 +24,7 @@ import { AuthInterceptor } from "./helpers/auth.interceptor";
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingCartItemComponent } from './components/shopping-cart/shopping-cart-item/shopping-cart-item.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { CreditCardComponent } from './components/checkout/credit-card/credit-card.component';
+import { CreditCardFormComponent } from './components/checkout/credit-card-form/credit-card-form.component';
 import { ShippingAddressComponent } from './components/checkout/shipping-address/shipping-address.component';
 import { OrderSummaryComponent } from './components/checkout/order-summary/order-summary.component';
 
@@ -44,7 +44,7 @@ import { OrderSummaryComponent } from './components/checkout/order-summary/order
     ShoppingCartComponent,
     ShoppingCartItemComponent,
     CheckoutComponent,
-    CreditCardComponent,
+    CreditCardFormComponent,
     ShippingAddressComponent,
     OrderSummaryComponent
   ],

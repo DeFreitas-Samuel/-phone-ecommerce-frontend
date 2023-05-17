@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CartService} from "../../services";
 import {CartItem} from "../../interfaces/cart-item.interface";
 import {Observable} from "rxjs";
-import { Router } from '@angular/router';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shopping-cart',

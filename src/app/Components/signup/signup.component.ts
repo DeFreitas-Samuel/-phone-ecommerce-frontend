@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
     lastname: [null, Validators.required],
     birthdate: [null, [Validators.required]],
     email: [null, [Validators.email, Validators.required]],
-    password: [null,  /*[Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),*/ Validators.required]
+    password: [null,  [/*[Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),*/ Validators.required]]
   })
   errorMessage:string = '';
 
