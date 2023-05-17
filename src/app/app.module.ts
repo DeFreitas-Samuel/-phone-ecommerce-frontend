@@ -23,6 +23,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {AuthInterceptor} from "./helpers/auth.interceptor";
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingCartItemComponent } from './components/shopping-cart/shopping-cart-item/shopping-cart-item.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CreditCardFormComponent } from './components/checkout/credit-card-form/credit-card-form.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { ShoppingCartItemComponent } from './components/shopping-cart/shopping-c
     PageNotFoundComponent,
     DashboardComponent,
     ShoppingCartComponent,
-    ShoppingCartItemComponent
+    ShoppingCartItemComponent,
+    CheckoutComponent,
+    CreditCardFormComponent
   ],
   imports: [
     BrowserModule,

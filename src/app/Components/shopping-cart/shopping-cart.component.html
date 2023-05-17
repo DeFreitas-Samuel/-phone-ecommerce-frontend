@@ -4,7 +4,7 @@
     <div *ngFor="let cartItem of shoppingCart ">
       <app-shopping-cart-item [cartItem]="cartItem"></app-shopping-cart-item>
     </div>
-    <button mat-raised-button>Proceed to Checkout</button>
+    <button mat-raised-button (click)="onCheckOut()">Proceed to Checkout</button>
   </div>
 
   <ng-template #emptyCart>
@@ -14,4 +14,5 @@
 </div>
 
 <ng-template #loading>
-  <p>Loading...</p></ng-template>
+  <p>Loading...</p>
+</ng-template>
