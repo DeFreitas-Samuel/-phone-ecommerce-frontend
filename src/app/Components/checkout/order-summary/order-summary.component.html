@@ -1,1 +1,8 @@
-<p>order-summary works!</p>
+<h3>Order Summary</h3>
+<div *ngFor="let cartItem of $cartCopyObservable | async ">
+  <div>Name: {{cartItem.name}}</div>
+  <div>Total Price: {{cartItem.totalPrice | currency:'USD'}}</div>
+  <div>Quantity: {{cartItem.quantity}}</div>
+  <br>
+</div>
+<h4>Total of the cart: {{this.$cartTotalObservable | async | currency:'USD'}}</h4>

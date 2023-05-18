@@ -6,6 +6,8 @@
       <app-shopping-cart-item [cartItem]="cartItem"></app-shopping-cart-item>
     </div>
 
+    <h4>Total of the cart: {{this.$cartTotalObservable| async | currency:'USD'}}</h4>
+
     <button (click)="onCheckout()" mat-raised-button>Proceed to Checkout</button>
     </div>
 

@@ -7,7 +7,7 @@
            formControlName= "address">
     <div  *ngIf="!shippingAddressForm.get('address')?.valid && shippingAddressForm.get('address')?.dirty"
           class="input-error">
-      The address must not be empty
+      Please introduce a valid address
     </div>
   </div>
   <div class="form-input">
@@ -18,7 +18,7 @@
            formControlName= "city">
     <div  *ngIf="!shippingAddressForm.get('city')?.valid && shippingAddressForm.get('city')?.dirty"
           class="input-error">
-      The city must not be empty
+      Please introduce a valid city
     </div>
   </div>
   <div class="form-input">
@@ -29,7 +29,7 @@
            formControlName= "state">
     <div  *ngIf="!shippingAddressForm.get('state')?.valid && shippingAddressForm.get('state')?.dirty"
           class="input-error">
-      The state must not be empty
+      Please introduce a valid state
     </div>
   </div>
   <div class="form-input">
@@ -40,7 +40,7 @@
            formControlName= "phoneNumber">
     <div  *ngIf="!shippingAddressForm.get('phoneNumber')?.valid && shippingAddressForm.get('phoneNumber')?.dirty"
           class="input-error">
-      The phone number must not be empty and be a valid phone number
+      Please introduce a valid phone number
     </div>
   </div>
   <div class="form-input">
@@ -51,7 +51,7 @@
            formControlName= "zipCode">
     <div  *ngIf="!shippingAddressForm.get('zipCode')?.valid && shippingAddressForm.get('zipCode')?.dirty"
           class="input-error">
-      The zip code must not be empty and be a valid 5 digits zip code
+      Please introduce a valid 5 digits zip code
     </div>
   </div>
 </form>

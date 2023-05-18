@@ -10,12 +10,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-
+  $cartTotalObservable!: Observable<number>;
   shoppingCart$!: Observable<CartItem[]>;
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
     this.shoppingCart$ = this.cartService.getCart;
+    this.$cartTotalObservable = this.cartService.cartTotal;
   }
 
   onCheckout() {
