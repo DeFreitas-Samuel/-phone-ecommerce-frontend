@@ -12,16 +12,16 @@ import {Router} from "@angular/router";
 })
 export class SignupComponent implements OnInit {
   user: UserRegistrationData = new UserRegistrationData();
-  signUpForm: FormGroup = this.fb.group({
+  signUpForm: FormGroup = this.formBuilder.group({
     firstname: [null, Validators.required],
     lastname: [null, Validators.required],
     birthdate: [null, [Validators.required]],
     email: [null, [Validators.email, Validators.required]],
-    password: [null,  /*[Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),*/ Validators.required]
+    password: [null,  [/*[Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),*/ Validators.required]]
   })
   errorMessage:string = '';
 
-  constructor(private auth: AuthService, private router: Router, private fb: FormBuilder) {}
+  constructor(private auth: AuthService, private router: Router, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
 

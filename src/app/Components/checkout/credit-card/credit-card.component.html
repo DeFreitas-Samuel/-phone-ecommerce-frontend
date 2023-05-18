@@ -1,0 +1,18 @@
+<form [formGroup]="creditCardForm">
+    <div>
+        <label for="cardHolderName">Credit Card Holder Name: </label>
+        <input id="cardHolderName" type="text" formControlName="cardHolderName">
+    </div>
+    <div>
+        <label for="cardNumber">Credit Card Number: </label>
+        <input id="cardNumber" type="text" formControlName="cardNumber">
+    </div>
+    <div>
+        <label for="expirationDate">Expiration Date: </label>
+        <input id="expirationDate" type="text" formControlName="expirationDate">
+    </div>
+    <div>
+        <label for="cvv">CVV: </label>
+        <input id="cvv" type="text" formControlName="cvv">
+    </div>
+</form>
