@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import {distinctUntilChanged} from "rxjs";
 
 @Component({
   selector: 'app-shipping-address',
@@ -7,6 +8,8 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./shipping-address.component.scss']
 })
 export class ShippingAddressComponent implements OnInit {
+
+  @Output() statusChanged = new EventEmitter()
 
   shippingAddressForm = this.formBuilder.group({
     address: [null, [Validators.required]],
@@ -19,6 +22,11 @@ export class ShippingAddressComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.shippingAddressForm.statusChanges
+      .pipe(distinctUntilChanged())
+      .subscribe(status => {
+        this.statusChanged.emit(status);
+      })
   }
 
 }

@@ -1,3 +1,5 @@
 <app-order-summary></app-order-summary>
-<app-credit-card-form></app-credit-card-form>
-<app-shipping-address></app-shipping-address>
+<app-credit-card-form (statusChanged)="onStatusChangedOnCreditCardForm($event)" ></app-credit-card-form>
+<app-shipping-address (statusChanged)="onStatusChangedOnShippingAddressForm($event)"></app-shipping-address>
+
+<button mat-raised-button (click)="onPurchase()"  [disabled]="!isButtonDisabled">Purchase</button>

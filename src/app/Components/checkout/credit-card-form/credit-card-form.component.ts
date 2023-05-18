@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {distinctUntilChanged} from "rxjs";
 
 @Component({
   selector: 'app-credit-card-form',
@@ -7,6 +8,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./credit-card-form.component.scss']
 })
 export class CreditCardFormComponent implements OnInit {
+
+  @Output() statusChanged = new EventEmitter()
 
   creditCardForm: FormGroup = this.fb.group({
     cardHolderName: [null, [Validators.required]],
@@ -18,6 +21,11 @@ export class CreditCardFormComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.creditCardForm.statusChanges
+      .pipe(distinctUntilChanged())
+      .subscribe(status => {
+      this.statusChanged.emit(status);
+    })
   }
 
 }
