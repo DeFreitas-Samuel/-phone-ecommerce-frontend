@@ -21,12 +21,19 @@ export class AuthService {
 
   }
 
-  get currentLoggedUserSnapshot(){
-    return this._currentLoggedUser.getValue();
+  get loggedInUserIdSnapshot(){
+    if(this._currentLoggedUser.value !== null){
+      return this._currentLoggedUser.value.id;
+    }
+    return -1;
+  }
+
+  get loggedInUserSnapshot(){
+    return this._currentLoggedUser.value;
   }
 
 
-  get currentLoggedUser() {
+  get loggedInUser() {
     return this._currentLoggedUser.asObservable();
   }
 

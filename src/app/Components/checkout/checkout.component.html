@@ -1,5 +1,20 @@
 <app-order-summary></app-order-summary>
-<app-credit-card-form (statusChanged)="onStatusChangedOnCreditCardForm($event)" ></app-credit-card-form>
+
+
+<form [formGroup]="paymentTypeForm">
+    <input type="radio" id="credit-card" name="paymentType" value="creditCard" formControlName="paymentType">
+    <label for="credit-card">Credit Card</label>
+
+    <input type="radio" id="cash" name="paymentType" value="cash" formControlName="paymentType">
+    <label for="cash">Cash on Arrival</label>
+</form>
+
+
+
+<div *ngIf="paymentTypeForm.get('paymentType')?.value === 'creditCard'">
+    <app-credit-card-form (statusChanged)="onStatusChangedOnCreditCardForm($event)"></app-credit-card-form>
+</div>
+
 <app-shipping-address (statusChanged)="onStatusChangedOnShippingAddressForm($event)"></app-shipping-address>
 
-<button mat-raised-button (click)="onPurchase()"  [disabled]="!isButtonDisabled">Purchase</button>
+<button mat-raised-button (click)="onPurchase()" [disabled]="!isButtonDisabled">Purchase</button>

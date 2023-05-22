@@ -1,6 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import {distinctUntilChanged} from "rxjs";
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { distinctUntilChanged } from "rxjs";
 
 @Component({
   selector: 'app-shipping-address',
@@ -9,9 +9,23 @@ import {distinctUntilChanged} from "rxjs";
 })
 export class ShippingAddressComponent implements OnInit {
 
-  @Output() statusChanged = new EventEmitter()
+  @Output() statusChanged = new EventEmitter<string>()
 
-  shippingAddressForm = this.formBuilder.group({
+
+  get shippingAddress(): {
+    address: string,
+    city: string,
+    state: string,
+    phoneNumber: string,
+    zipCode: string,
+  } {
+    if (this.shippingAddressForm.valid) {
+      return this.shippingAddressForm.value;
+    }
+    throw new Error('The form must be valid'); 
+  }
+
+  shippingAddressForm: FormGroup = this.fb.group({
     address: [null, [Validators.required]],
     city: [null, [Validators.required]],
     state: [null, [Validators.required]],
@@ -19,12 +33,12 @@ export class ShippingAddressComponent implements OnInit {
     zipCode: [null, [Validators.required, Validators.pattern('[0-9]{5}')]]
   })
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.shippingAddressForm.statusChanges
       .pipe(distinctUntilChanged())
-      .subscribe(status => {
+      .subscribe((status) => {
         this.statusChanged.emit(status);
       })
   }

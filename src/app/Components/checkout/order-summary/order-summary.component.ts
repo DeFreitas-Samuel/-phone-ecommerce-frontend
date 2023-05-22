@@ -12,11 +12,14 @@ export class OrderSummaryComponent implements OnInit {
 
   $cartTotalObservable!: Observable<number>;
   $cartCopyObservable!: Observable<CartItem[]>
+
+
+
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.$cartCopyObservable = this.cartService.getCart;
-    this.$cartTotalObservable = this.cartService.cartTotal;
+    this.$cartCopyObservable = this.cartService.cart$;
+    this.$cartTotalObservable = this.cartService.cartTotal$;
   }
 
 }

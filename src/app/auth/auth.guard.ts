@@ -7,14 +7,11 @@ export const authGuard = () => {
   const router = inject(Router);
   let isLoggedIn:Boolean = false;
   
-  authService.currentLoggedUser.subscribe(user=> {
+  authService.loggedInUser.subscribe(user=> {
     isLoggedIn = !!user
   })
 
 
-
-
-  
   if (isLoggedIn) {
     console.log('Authenticated')
     return true;

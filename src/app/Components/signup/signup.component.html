@@ -22,30 +22,6 @@
       The lastname must not be empty
     </div>
   </div>
-  <div class="form-input">
-    <label for="address">Address *</label>
-    <input id="address"
-           type="text"
-           placeholder= "Enter your address"
-           formControlName= "address">
-
-    <div  *ngIf="!signUpForm.get('address')?.valid && signUpForm.get('address')?.dirty"
-          class="input-error">
-      The Address 1 must not be empty
-    </div>
-  </div>
-
-  <div class="form-input">
-    <label for="phonenumber">Phone Number *</label>
-    <input id="phonenumber"
-           type="text"
-           placeholder="Enter your phone number"
-           formControlName= "phonenumber">
-    <div  *ngIf="!signUpForm.get('phonenumber')?.valid && signUpForm.get('phonenumber')?.dirty"
-          class="input-error">
-      The phone number must not be empty and be a valid phone number
-    </div>
-  </div>
 
   <div class="form-input">
     <label for="birthdate">Birthdate *</label>

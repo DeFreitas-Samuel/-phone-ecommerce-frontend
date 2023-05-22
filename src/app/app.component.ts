@@ -18,8 +18,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(){
-    console.log('Current Logged user: ', this.auth.currentLoggedUser);
-    this.authSubscription = this.auth.currentLoggedUser.subscribe((user) => {
+    this.authSubscription = this.auth.loggedInUser.subscribe((user) => {
       this.isLoggedIn = !!user;
     });
     

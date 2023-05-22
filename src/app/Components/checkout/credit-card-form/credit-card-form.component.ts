@@ -9,7 +9,15 @@ import {distinctUntilChanged} from "rxjs";
 })
 export class CreditCardFormComponent implements OnInit {
 
-  @Output() statusChanged = new EventEmitter()
+  @Output() statusChanged = new EventEmitter<string>()
+
+  get last4DigitsOfCard(){
+    if (this.creditCardForm.valid){
+      const creditCardNumber = this.creditCardForm.get('cardNumber')?.value;
+      return creditCardNumber?.slice(-4);
+    }
+    return '';
+  }
 
   creditCardForm: FormGroup = this.fb.group({
     cardHolderName: [null, [Validators.required]],
@@ -23,7 +31,7 @@ export class CreditCardFormComponent implements OnInit {
   ngOnInit(): void {
     this.creditCardForm.statusChanges
       .pipe(distinctUntilChanged())
-      .subscribe(status => {
+      .subscribe((status) => {
       this.statusChanged.emit(status);
     })
   }

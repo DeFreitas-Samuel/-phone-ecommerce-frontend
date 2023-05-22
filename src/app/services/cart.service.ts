@@ -31,13 +31,21 @@ export class CartService {
     this.recalculateTotal();
   }
 
-  get getCart(){
+  get cart$(){
     return this.cartSubject.asObservable();
   }
 
-  get cartTotal(){
+  get cartSnapshot(){
+    return this.cartSubject.value;
+  }
+
+  get cartTotal$(){
     return this.cartTotalSubject.asObservable();
 
+  }
+
+  get cartTotalSnapshot(){
+    return this.cartTotalSubject.value;
   }
 
   recalculateTotal(){

@@ -15,8 +15,8 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.shoppingCart$ = this.cartService.getCart;
-    this.$cartTotalObservable = this.cartService.cartTotal;
+    this.shoppingCart$ = this.cartService.cart$;
+    this.$cartTotalObservable = this.cartService.cartTotal$;
   }
 
   onCheckout() {
