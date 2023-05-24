@@ -18,7 +18,7 @@ export class CheckoutComponent implements OnInit {
   shippingAddressFormStatus: string = 'INVALID';
 
   paymentTypeForm: FormGroup = this.fb.group({
-    paymentType: ['creditCard', [Validators.required]]
+    paymentType: ['Debit/Credit Card', [Validators.required]]
   })
 
   constructor(private fb: FormBuilder, 
@@ -35,7 +35,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   get isButtonDisabled() {
-    if (this.paymentTypeForm.get('paymentType')?.value === 'creditCard') {
+    if (this.paymentTypeForm.get('paymentType')?.value === 'Debit/Credit Card') {
       return this.creditCardFormStatus === 'VALID' && this.shippingAddressFormStatus === 'VALID';
     }
     return this.shippingAddressFormStatus === 'VALID'
@@ -46,7 +46,7 @@ export class CheckoutComponent implements OnInit {
     const paymentTypeSelected:string = this.paymentTypeForm.get('paymentType')?.value;
     let last4DigitsOfCard: string = '';
 
-    if(paymentTypeSelected === 'creditCard'){
+    if(paymentTypeSelected === 'Debit/Credit Card'){
       last4DigitsOfCard = this.creditCardFormComponent.last4DigitsOfCard;
     }
   

@@ -27,8 +27,10 @@ export class PurchaseService {
       shipping_address: shippingAddress
     }
 
-    //TODO f
+ 
     this.http.post(this.routes.base + this.routes.purchase.purchase, order).subscribe(console.log)
   }
+
+  
 
 }

@@ -2,16 +2,16 @@
 
 
 <form [formGroup]="paymentTypeForm">
-    <input type="radio" id="credit-card" name="paymentType" value="creditCard" formControlName="paymentType">
+    <input type="radio" id="credit-card" name="paymentType" value="Debit/Credit Card" formControlName="paymentType">
     <label for="credit-card">Credit Card</label>
 
-    <input type="radio" id="cash" name="paymentType" value="cash" formControlName="paymentType">
+    <input type="radio" id="cash" name="paymentType" value="Cash on Delivery" formControlName="paymentType">
     <label for="cash">Cash on Arrival</label>
 </form>
 
 
 
-<div *ngIf="paymentTypeForm.get('paymentType')?.value === 'creditCard'">
+<div *ngIf="paymentTypeForm.get('paymentType')?.value === 'Debit/Credit Card'">
     <app-credit-card-form (statusChanged)="onStatusChangedOnCreditCardForm($event)"></app-credit-card-form>
 </div>
 
