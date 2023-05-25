@@ -1,1 +1,35 @@
-<p>user-dashboard works!</p>
+<div *ngIf="orders$ | async as orders; else loading">
+    <div *ngIf="orders.length >0; else emptyOrders">
+        <div *ngFor="let order of orders">
+            <div>Amount Due: {{order.amount_due}}</div>
+            <div *ngFor="let billLine of order.bill_lines">
+                <div>Description: {{billLine.description}}</div>
+                <div>Price: {{billLine.price | currency:'USD'}}</div>
+                <div>Quantity: {{billLine.quantity}}</div>
+                <br>
+            </div>
+            <div>Shipment Detail</div>
+            <div>{{order.shipment.address}}</div>
+            <div>{{order.shipment.city}}</div>
+            <div>{{order.shipment.state}}</div>
+            <div>{{order.shipment.phone_number}}</div>
+            <div>{{order.shipment.zipcode}}</div>
+            <div>{{order.shipment.estimated_arrival}}</div>
+            <div>{{order.shipment.delivered}}</div>
+            <br>
+            <div>Total {{order.total | currency:'USD'}}</div>
+
+            <br>
+            <br>
+            <hr>
+            <br>
+            <br>
+        </div>
+    </div>
+    <ng-template #emptyOrders>
+        <p>You have made no orders yet</p>
+    </ng-template>
+</div>
+<ng-template #loading>
+    <p>Loading...</p>
+</ng-template>

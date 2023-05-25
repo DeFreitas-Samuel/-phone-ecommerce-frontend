@@ -18,7 +18,7 @@ import { ProductItemComponent } from './components/product-list/product-item/pro
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 import { AuthInterceptor } from "./helpers/auth.interceptor";
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
@@ -40,7 +40,6 @@ import { OrderSummaryComponent } from './components/checkout/order-summary/order
     UserDashboardComponent,
     HomeComponent,
     PageNotFoundComponent,
-    DashboardComponent,
     ShoppingCartComponent,
     ShoppingCartItemComponent,
     CheckoutComponent,

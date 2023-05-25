@@ -18,6 +18,9 @@ export const BACKEND_ROUTES = {
   },
   purchase: {
     purchase: '/api/purchase'
+  },
+  orders: {
+    orders: '/api/orders'
   }
 
 
