@@ -27,6 +27,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CreditCardFormComponent } from './components/checkout/credit-card-form/credit-card-form.component';
 import { ShippingAddressComponent } from './components/checkout/shipping-address/shipping-address.component';
 import { OrderSummaryComponent } from './components/checkout/order-summary/order-summary.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { OrderSummaryComponent } from './components/checkout/order-summary/order
     CheckoutComponent,
     CreditCardFormComponent,
     ShippingAddressComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,

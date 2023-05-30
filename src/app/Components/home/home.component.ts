@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CarouselItem } from 'src/app/interfaces/carouselItem.interface';
+import { EcomConfigurator } from 'src/app/services/ecom-configurator.service';
 import { SandBoxService as SandBoxService } from 'src/app/services/sandbox.service';
 
 @Component({
@@ -9,9 +12,13 @@ import { SandBoxService as SandBoxService } from 'src/app/services/sandbox.servi
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private sandbox: SandBoxService) { }
+  carousel$!: Observable<CarouselItem[]>
+
+  constructor(private sandbox: SandBoxService, private ecomConfigurator: EcomConfigurator) { }
 
   ngOnInit(): void {
+    this.carousel$ = this.ecomConfigurator.getCarouselImages()
+
   }
 
   testSession():void {

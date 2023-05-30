@@ -1,3 +1,12 @@
 <p>home works!</p>
 
+<div *ngIf="carousel$ | async as carouselArray; else loading">
+    <app-carousel [carouselArray]="carouselArray"></app-carousel>
+</div>
+
+<ng-template #loading>
+    <p>Loading...</p>
+</ng-template>
+
+
 <button (click)="testSession()">Test Session</button>
