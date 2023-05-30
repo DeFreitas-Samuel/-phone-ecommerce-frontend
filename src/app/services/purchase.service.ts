@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Order } from "../interfaces/order.interface";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { ROUTES } from "../token/routes.token";
 import { RouteType } from "../backend.routes";
 import { AuthService } from './auth.service';
@@ -28,7 +28,11 @@ export class PurchaseService {
     }
 
  
-    this.http.post(this.routes.base + this.routes.purchase.purchase, order).subscribe(console.log)
+    this.http.post(`${this.routes.base + this.routes.purchase.purchase}`, order, { observe: 'response' }).subscribe((response:HttpResponse<{}>) => {
+      if(response.ok && response.status === 200){
+        this.cartService.emptyCart();
+      }
+    })
   }
 
   

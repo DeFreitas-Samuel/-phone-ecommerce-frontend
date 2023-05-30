@@ -27,8 +27,7 @@ export class CartService {
       this.cart.push(itemToBeAdded);
     }
 
-    this.cartSubject.next(this.cart);
-    this.recalculateTotal();
+    this.syncCart();
   }
 
   get cart$(){
@@ -61,8 +60,7 @@ export class CartService {
 
       cartItemToBeModified.quantity++;
       cartItemToBeModified.totalPrice = parseFloat((cartItemToBeModified.totalPrice + cartItemToBeModified.unitPrice).toFixed(2));
-      this.cartSubject.next(this.cart);
-      this.recalculateTotal();
+      this.syncCart()
     }
 
     if(operator === OPERATOR.SUBTRACT){
@@ -74,8 +72,7 @@ export class CartService {
 
       cartItemToBeModified.quantity--;
       cartItemToBeModified.totalPrice = parseFloat((cartItemToBeModified.totalPrice - cartItemToBeModified.unitPrice).toFixed(2));
-      this.cartSubject.next(this.cart);
-      this.recalculateTotal();
+      this.syncCart()
     }
 
   }
@@ -84,8 +81,31 @@ export class CartService {
     const index = this.cart.findIndex(e => e.product_id === productId )
     const newCart = this.cart.filter( e => e !== this.cart[index]);
     this.cart = newCart;
+    this.syncCart();
+  }
+
+  emptyCart(){
+    this.cart = [];
+    this.syncCart();
+  }
+
+  private syncCart(){
     this.cartSubject.next(this.cart);
     this.recalculateTotal();
+    localStorage.setItem("shopping_cart", JSON.stringify(this.cart));
+  }
+
+  checkLocalStorageForPreviousCart(){
+    const shoppingCartString = localStorage.getItem("shopping_cart");
+    if(shoppingCartString){
+      try {
+        this.cart = JSON.parse(shoppingCartString);
+        this.syncCart();
+      } catch (e) {
+        console.error('Error parsing shopping cart data from local storage:', e);
+        localStorage.removeItem("shopping_cart");
+      }
+    }
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "./services";
+import {AuthService, CartService} from "./services";
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   isLoggedIn: boolean = false;
   authSubscription: Subscription | undefined;
 
-  constructor( private auth: AuthService) {
+  constructor( private auth: AuthService, private cartService: CartService) {
 
   }
 
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     this.authSubscription = this.auth.loggedInUser.subscribe((user) => {
       this.isLoggedIn = !!user;
     });
-    
+    this.cartService.checkLocalStorageForPreviousCart();
   }
 
 
