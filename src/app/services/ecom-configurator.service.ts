@@ -9,7 +9,7 @@ import { CarouselItem } from "../interfaces/carouselItem.interface";
 
 export class EcomConfigurator {
 
-    constructor(private httpClient: HttpClient){
+    constructor(private httpClient: HttpClient) {
 
     }
 
@@ -19,15 +19,19 @@ export class EcomConfigurator {
 
     test(): Observable<CarouselItem[]> {
 
+
         return of([
-            {imageUrl:'http://localhost:8000/api/images/1.jpg',
-             alt:'Mac',
-             linkToRedirect:'test'
+            {
+                imageUrl: 'http://localhost:8000/api/images/1.jpg',
+                alt: 'Mac',
+                linkToRedirect: 'test'
+            },
+            {
+                imageUrl: 'http://localhost:8000/api/images/2.jpg',
+                alt: 'Mac2',
+                linkToRedirect: 'test2'
             }
-          ])
+        ])
 
-
-        // return timer(2000).pipe(
-        //   map(() => ));
-      }
+    }
 }

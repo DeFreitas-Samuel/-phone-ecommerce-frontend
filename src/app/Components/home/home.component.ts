@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.carousel$ = this.ecomConfigurator.getCarouselImages()
+    this.ecomConfigurator.getCarouselImages().subscribe(console.log)
 
   }
 

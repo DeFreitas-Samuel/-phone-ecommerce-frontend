@@ -1,7 +1,8 @@
 <p>home works!</p>
 
-<div *ngIf="carousel$ | async as carouselArray; else loading">
-    <app-carousel [carouselArray]="carouselArray"></app-carousel>
+<div *ngIf="carousel$ | async as car; else loading">
+    <app-carousel [carouselArray]="car"></app-carousel>
+
 </div>
 
 <ng-template #loading>
