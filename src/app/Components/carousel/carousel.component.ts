@@ -10,42 +10,63 @@ import { CarouselItem } from 'src/app/interfaces/carouselItem.interface';
 export class CarouselComponent implements OnInit, OnDestroy {
 
   @Input() carouselArray!: CarouselItem[];
+  @Input() interval: number = 6000;
   currentItem!: CarouselItem;
   currentIndex: number = 0; 
-  carouselNextItemSubscription!: Subscription;
+  carouselNextItemSubscription!: Subscription | null;
 
   constructor() { }
 
+
+
+
+
   ngOnInit(): void {
     this.currentItem = this.carouselArray[this.currentIndex];
-    this.carouselNextItemSubscription = interval(5000).subscribe(val => this.onRightClick());
+    this.intervalStart(this.interval);
 
   }
   ngOnDestroy(): void {
-      this.carouselNextItemSubscription.unsubscribe();
+      this.intervalStop()
   }
 
-  onRightClick(){
-    const carouselArrayLength = this.carouselArray.length;
-    if(this.currentIndex >= carouselArrayLength-1){
+  intervalStart(intervalTime: number){
+    this.intervalStop()
+    this.carouselNextItemSubscription = interval(intervalTime).subscribe(()=>this.nextImage())
+  }
+
+  intervalStop(){
+    if(this.carouselNextItemSubscription){
+      this.carouselNextItemSubscription.unsubscribe()
+      this.carouselNextItemSubscription = null;
+    }
+  }
+
+  nextImage(){
+    const carouselArrayLengthZeroIndexed = this.carouselArray.length -1;
+    if(this.currentIndex >= carouselArrayLengthZeroIndexed){
       this.currentIndex = 0;
       this.currentItem = this.carouselArray[this.currentIndex];
+      this.intervalStart(this.interval);
     }
     else{
       this.currentIndex++;
       this.currentItem = this.carouselArray[this.currentIndex];
+      this.intervalStart(this.interval);
     }
   }
 
-  onLeftClick(){
+  previousImage(){
     const carouselArrayLength = this.carouselArray.length;
     if(this.currentIndex <= 0){
       this.currentIndex = carouselArrayLength-1;
       this.currentItem = this.carouselArray[this.currentIndex];
+      this.intervalStart(this.interval);
     }
     else{
       this.currentIndex--;
       this.currentItem = this.carouselArray[this.currentIndex];
+      this.intervalStart(this.interval);
     }
   }
 }

@@ -1,7 +1,7 @@
 <div class="carousel-container">
-    <div class="carousel-arrow" (click)="onLeftClick()"><</div>
+    <div class="carousel-arrow" (click)="previousImage()"><</div>
     <a [href]="currentItem.linkToRedirect">
         <img [src]="currentItem.imageUrl" [alt]="currentItem.alt">
     </a>
-    <div class="carousel-arrow" (click)="onRightClick()">></div>
+    <div class="carousel-arrow" (click)="nextImage()">></div>
 </div>
