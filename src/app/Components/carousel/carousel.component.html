@@ -4,4 +4,9 @@
         <img [src]="currentItem.imageUrl" [alt]="currentItem.alt">
     </a>
     <div class="carousel-arrow" (click)="nextImage()">></div>
+    <ul class="carousel-indicator d-flex">
+        <ng-container *ngFor="let item of carouselArray; let i = index">
+            <li [class.w-100]="currentIndex == i" ngClass="{ 'w-100' : tucondicion}" >x </li>
+        </ng-container>
+    </ul>
 </div>

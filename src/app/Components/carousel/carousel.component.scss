@@ -12,3 +12,23 @@
 .carousel-container {
     position: relative;
 }
+
+.carousel-indicator {
+    cursor: pointer;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.d {
+    &-flex{ 
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.w {
+    &-100 {
+        width: 100%
+    }
+}

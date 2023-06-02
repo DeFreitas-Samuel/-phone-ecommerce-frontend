@@ -12,7 +12,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
   @Input() carouselArray!: CarouselItem[];
   @Input() interval: number = 6000;
   currentItem!: CarouselItem;
-  currentIndex: number = 0;
+  public currentIndex: number = 0;
 
   private readonly destroyer$ = new Subject<void>();
 
@@ -41,7 +41,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
       )
       .subscribe()
 
-     const c$ =  of([1])
+     /*const c$ =  of([1])
       .pipe(
 
       )
@@ -51,7 +51,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
       const n = a.filter((n) => n > 2)
         .map(n => n * 2)
-        .reduce((acc,val) => acc+ val, 0)
+        .reduce((acc,val) => acc+ val, 0)*/
   }
 
   // pipe(...args:Array<Function>) {
