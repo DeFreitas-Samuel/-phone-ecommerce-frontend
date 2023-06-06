@@ -59,3 +59,32 @@ h3 {
   }
 
 }
+
+.d {
+  &-flex {
+    display: flex;
+  }
+}
+
+.flex {
+  &-row {
+    flex-direction: row;
+  }
+
+  &-column {
+    flex-direction: column;
+  }
+}
+
+.justify-content {
+  &-center {
+    justify-content: center;
+  }
+}
+
+
+@for $i from 1 through 4 {
+  .w-#{$i * 25} {
+    width: $i * 25%;
+  }
+}

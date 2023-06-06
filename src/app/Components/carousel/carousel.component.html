@@ -1,12 +1,16 @@
-<div class="carousel-container">
-    <div class="carousel-arrow" (click)="previousImage()"><</div>
-    <a [href]="currentItem.linkToRedirect">
-        <img [src]="currentItem.imageUrl" [alt]="currentItem.alt">
-    </a>
-    <div class="carousel-arrow" (click)="nextImage()">></div>
+<div class="d-flex flex-column">
+    <div class="carousel-container">
+        <div class="carousel-arrow" (click)="previousImage()"><</div>
+        <a [href]="currentItem.linkToRedirect">
+            <img [src]="currentItem.imageUrl" [alt]="currentItem.alt" class="carousel-image">
+        </a>
+        <div class="carousel-arrow" (click)="nextImage()">></div>
+        
+    </div>
+    
     <ul class="carousel-indicator d-flex">
         <ng-container *ngFor="let item of carouselArray; let i = index">
-            <li [class.w-100]="currentIndex == i" ngClass="{ 'w-100' : tucondicion}" >x </li>
+            <button [ngClass]="{ 'w-100' : currentIndex == i, 'active' : currentIndex == i}" (click)="changeSlide(i)"></button>
         </ng-container>
     </ul>
 </div>

@@ -99,4 +99,10 @@ export class CarouselComponent implements OnInit, OnDestroy {
     this.destroyer$.next();
     this.intervalStart(this.interval);
   }
+
+  changeSlide(index: number){
+    this.currentIndex = index;
+    this.currentItem = this.carouselArray[this.currentIndex];
+    this.restartCarousel();
+  }
 }

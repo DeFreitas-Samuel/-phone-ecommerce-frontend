@@ -1,34 +1,65 @@
-.carousel-arrow{
+.carousel{
+  &-arrow {
     display: inline-block;
     cursor: pointer;
     z-index: 2;
     position: absolute;
     top: 50%;
-    font-size: 30px;
-    
-}
+    font-size: 50px;
+  }
 
-
-.carousel-container {
+  &-container {
     position: relative;
-}
+    height: 400px;
+  }
 
-.carousel-indicator {
+  &-indicator {
     cursor: pointer;
     list-style-type: none;
     display: flex;
     flex-direction: row;
+  }
+
+  &-image {
+    max-height: 100%;
+    width: auto;
+  }
 }
 
-.d {
-    &-flex{ 
-        display: flex;
-        flex-direction: row;
-    }
+button {
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  width: 40px;
+  height: 10px;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  overflow: hidden;
+  background: lightgray;
+  cursor: pointer;
 }
 
-.w {
-    &-100 {
-        width: 100%
-    }
+button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background-color: red;
+  height: 100%;
+}
+
+button.active::after {
+  animation: 6s ease-in normal both running fill;
+}
+
+@keyframes fill {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
 }

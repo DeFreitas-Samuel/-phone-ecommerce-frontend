@@ -30,6 +30,11 @@ export class EcomConfigurator {
                 imageUrl: 'http://localhost:8000/api/images/2.jpg',
                 alt: 'Mac2',
                 linkToRedirect: 'test2'
+            },
+            {
+                imageUrl: 'http://localhost:8000/api/images/3.jpg',
+                alt: 'Mac3',
+                linkToRedirect: 'test3'
             }
         ])
 
