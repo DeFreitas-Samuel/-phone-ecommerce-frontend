@@ -1,7 +1,9 @@
 <div *ngIf="product$ | async as product; else loading">
     <br>
-    <img src="{{product.imageUrl}}" alt="Image of the product">
-
+    <!--TODO add utility classes done in the global css -->
+    <div class="product-image-container">
+        <img src="{{product.imageUrl}}" alt="Image of the product" class="product-image">
+    </div>
     <p>{{product.name}}</p>
     <br>
     <p>{{product.price | currency:'USD'}}</p>
@@ -11,7 +13,7 @@
     <p>{{product.specifications}}</p>
 
     <div class="quantity-selector">
-        <button (click)="onSubtractQuantity()" >-</button>
+        <button (click)="onSubtractQuantity()">-</button>
         <p>{{quantity}}</p>
         <button (click)="onAddQuantity()">+</button>
     </div>
@@ -24,6 +26,3 @@
 <ng-template #loading>
     <p>Loading...</p>
 </ng-template>
-
-
-

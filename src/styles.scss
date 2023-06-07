@@ -82,6 +82,14 @@ h3 {
   }
 }
 
+.product-image {
+  max-height: 100%;
+  &-container{
+    height:400px;
+    width:auto;
+  }
+}
+
 
 @for $i from 1 through 4 {
   .w-#{$i * 25} {
