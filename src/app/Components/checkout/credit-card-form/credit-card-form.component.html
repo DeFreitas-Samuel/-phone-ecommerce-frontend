@@ -4,21 +4,23 @@
     <input id="cardHolderName"
            type="text"
            placeholder="Enter the name in the card"
-           formControlName= "cardHolderName">
-    <div  *ngIf="!creditCardForm.get('cardHolderName')?.valid && creditCardForm.get('cardHolderName')?.dirty"
+           formControlName= "cardHolderName"
+           >
+    <div  *ngIf="!creditCardForm.get('cardHolderName')?.valid && creditCardForm.get('cardHolderName')?.touched"
           class="input-error">
       Please introduce a valid name
     </div>
   </div>
   <div class="form-input">
-    <label for="cardNumber">Card number *</label>
-    <input id="cardNumber"
+    <label for="cardNumberDisplay">Card number *</label>
+    <input id="cardNumberDisplay"
            type="text"
            placeholder="Enter your card number"
-           formControlName= "cardNumber">
-    <div  *ngIf="!creditCardForm.get('cardNumber')?.valid && creditCardForm.get('cardNumber')?.dirty"
+           formControlName= "cardNumberDisplay"
+           maxlength="19">
+    <div  *ngIf="!creditCardForm.get('cardNumberDisplay')?.valid && creditCardForm.get('cardNumberDisplay')?.touched"
           class="input-error">
-      Please introduce a valid card number
+      Invalid card number. Please introduce a valid card number <br> (XXXX XXXX XXXX XXXX)
     </div>
   </div>
   <div class="form-input">
@@ -26,10 +28,11 @@
     <input id="expireDate"
            type="text"
            placeholder="MM/YY"
-           formControlName= "expireDate">
-    <div  *ngIf="!creditCardForm.get('expireDate')?.valid && creditCardForm.get('expireDate')?.dirty"
+           formControlName= "expireDate"
+           maxlength="5">
+    <div  *ngIf="!creditCardForm.get('expireDate')?.valid && creditCardForm.get('expireDate')?.touched"
           class="input-error">
-      Please introduce a valid date of expiration
+      Invalid date. Please enter a valid month and year (MM/YY)
     </div>
   </div>
   <div class="form-input">
@@ -37,8 +40,9 @@
     <input id="cvv"
            type="text"
            placeholder="CVV"
-           formControlName= "cvv">
-    <div  *ngIf="!creditCardForm.get('cvv')?.valid && creditCardForm.get('cvv')?.dirty"
+           formControlName= "cvv"
+           maxlength="3">
+    <div  *ngIf="!creditCardForm.get('cvv')?.valid && creditCardForm.get('cvv')?.touched"
           class="input-error">
       Please introduce a valid CVV
     </div>

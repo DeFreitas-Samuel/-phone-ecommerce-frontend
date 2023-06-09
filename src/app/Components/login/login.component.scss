@@ -11,13 +11,13 @@ form {
   width: 25vw;
 }
 
-.ng-invalid:not(form).ng-dirty {
+.ng-invalid:not(form).ng-touched {
   outline: none;
   box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 0 3px #fde6e8;
 
 }
 
-.ng-invalid:not(form).ng-dirty:focus {
+.ng-invalid:not(form).ng-touched:focus {
   border-color: #dc3545;
 }
 

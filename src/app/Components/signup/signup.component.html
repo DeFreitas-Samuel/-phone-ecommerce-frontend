@@ -5,7 +5,7 @@
            type="text"
            placeholder="Enter your firstname"
            formControlName="firstname">
-    <div *ngIf="!signUpForm.get('firstname')?.valid && signUpForm.get('firstname')?.dirty"
+    <div *ngIf="!signUpForm.get('firstname')?.valid && signUpForm.get('firstname')?.touched"
          class="input-error">
       The firstname must not be empty
     </div>
@@ -17,7 +17,7 @@
            type="text"
            placeholder="Enter your lastname"
            formControlName="lastname">
-    <div *ngIf="!signUpForm.get('lastname')?.valid && signUpForm.get('lastname')?.dirty"
+    <div *ngIf="!signUpForm.get('lastname')?.valid && signUpForm.get('lastname')?.touched"
           class="input-error">
       The lastname must not be empty
     </div>
@@ -29,7 +29,7 @@
            type="date"
            placeholder="Enter your birthdate"
            formControlName= "birthdate">
-    <div  *ngIf="!signUpForm.get('birthdate')?.valid && signUpForm.get('birthdate')?.dirty"
+    <div  *ngIf="!signUpForm.get('birthdate')?.valid && signUpForm.get('birthdate')?.touched"
           class="input-error">
       The birthdate must not be empty and be a valid date
     </div>
@@ -41,7 +41,7 @@
            type="email"
            placeholder="Enter your email"
            formControlName= "email">
-    <div  *ngIf="!signUpForm.get('email')?.valid && signUpForm.get('email')?.dirty"
+    <div  *ngIf="!signUpForm.get('email')?.valid && signUpForm.get('email')?.touched"
           class="input-error">
       The email must not be empty and be a valid email
     </div>
@@ -53,7 +53,7 @@
            type="password"
            formControlName= "password"
            placeholder="Create your password">
-    <div  *ngIf="!signUpForm.get('password')?.valid && signUpForm.get('password')?.dirty"
+    <div  *ngIf="!signUpForm.get('password')?.valid && signUpForm.get('password')?.touched"
           class="input-error">
       The password must not be empty, and must be at least 8 characters long
     </div>
