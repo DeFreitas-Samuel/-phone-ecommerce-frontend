@@ -28,6 +28,7 @@ import { CreditCardFormComponent } from './components/checkout/credit-card-form/
 import { ShippingAddressComponent } from './components/checkout/shipping-address/shipping-address.component';
 import { OrderSummaryComponent } from './components/checkout/order-summary/order-summary.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { CanActivateIfLoggedIn } from './auth/auth.guard';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 
   ],
   providers: [HttpClient,
+    CanActivateIfLoggedIn,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

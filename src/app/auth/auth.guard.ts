@@ -1,23 +1,32 @@
-import {Router} from "@angular/router";
-import {AuthService} from "../services";
-import {inject} from "@angular/core";
-
-export const authGuard = () => {
-  const authService = inject(AuthService);
-  const router = inject(Router);
-  let isLoggedIn:Boolean = false;
-  
-  authService.loggedInUser.subscribe(user=> {
-    isLoggedIn = !!user
-  })
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { AuthService } from "../services";
+import { Observable } from "rxjs";
+import { Injectable } from "@angular/core";
 
 
-  if (isLoggedIn) {
-    console.log('Authenticated')
+@Injectable()
+export class CanActivateIfLoggedIn implements CanActivate {
+
+  constructor(private authService: AuthService, private router: Router) { }
+
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+
+    const isLoggedIn: Boolean = !!this.authService.loggedInUserSnapshot;
+    console.log(state.url);
+
+    if (state.url === '/login' || state.url === '/signup') {
+      if (isLoggedIn) {
+        this.router.navigate(['/']);
+        return false;
+      }
+    }else if(!isLoggedIn){
+      this.router.navigate(['/login']);
+      return false;
+    }
+
     return true;
   }
 
+}
 
-  console.log('Not Authenticated')
-  return router.parseUrl('/login');
-};
