@@ -18,10 +18,13 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(){
+    this.auth.checkSessionStorageForUser();
+    this.cartService.checkLocalStorageForPreviousCart();
     this.authSubscription = this.auth.loggedInUser.subscribe((user) => {
       this.isLoggedIn = !!user;
     });
-    this.cartService.checkLocalStorageForPreviousCart();
+    
+    
   }
 
 

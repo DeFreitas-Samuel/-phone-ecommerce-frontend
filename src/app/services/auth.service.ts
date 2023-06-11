@@ -48,7 +48,8 @@ export class AuthService {
       .pipe(
         tap((response: JsonTokenInterface) => {
           if (response.access_token) {
-            localStorage.setItem('access_token', response.access_token);
+            sessionStorage.setItem('access_token', response.access_token);
+            sessionStorage.setItem("logged_user", JSON.stringify(response.user));
             this.updateCurrentLoggedUser(response.user);
             console.log('Access token set:', response.access_token);
             console.log('Current logged user set:', response.user);
@@ -63,8 +64,11 @@ export class AuthService {
       .pipe(
         tap((response: JsonTokenInterface) => {
           if (response.access_token) {
-            localStorage.setItem('access_token', response.access_token);
+            sessionStorage.setItem('access_token', response.access_token);
+            sessionStorage.setItem("logged_user", JSON.stringify(response.user));
             this.updateCurrentLoggedUser(response.user);
+            console.log('Access token set:', response.access_token);
+            console.log('Current logged user set:', response.user);
           }
         })
       );
@@ -79,7 +83,20 @@ export class AuthService {
         tap( () => {
           localStorage.removeItem("access_token");
           this.updateCurrentLoggedUser(null);
+          sessionStorage.removeItem("logged_user");
         })
     )
+  }
+
+  checkSessionStorageForUser(){
+    const userString = sessionStorage.getItem("logged_user");
+    if(userString){
+      try {
+        this.updateCurrentLoggedUser(JSON.parse(userString));
+      } catch (e) {
+        console.error('Error parsing session data from session storage:', e);
+        sessionStorage.removeItem("logged_user");
+      }
+    }
   }
 }
