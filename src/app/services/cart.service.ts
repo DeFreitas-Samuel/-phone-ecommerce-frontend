@@ -10,8 +10,8 @@ export class CartService {
   private total: number = 0;
   private cart: CartItem[] = [];
   private cartSubject:BehaviorSubject<CartItem[]> = new BehaviorSubject<CartItem[]>(this.cart);
-  private cartTotalSubject: BehaviorSubject<number> = new BehaviorSubject<number>(this.total)
-
+  private cartTotalSubject: BehaviorSubject<number> = new BehaviorSubject<number>(this.total);
+  private cartNumberOfItemsSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   constructor() { }
 
   addElementToCart(itemToBeAdded: CartItem){
@@ -43,11 +43,23 @@ export class CartService {
 
   }
 
+  get cartNumberOfItems$(){
+    return this.cartNumberOfItemsSubject.asObservable();
+  }
+
   get cartTotalSnapshot(){
     return this.cartTotalSubject.value;
   }
 
-  recalculateTotal(){
+  private recalculateTotalAmount(){
+    let amount = 0;
+    this.cart.forEach(cartItem => {
+      amount += cartItem.quantity;
+    })
+    this.cartNumberOfItemsSubject.next(amount);
+  }
+
+  private recalculateTotalPrice(){
     const newTotal = this.cart.reduce((total, nextItem) =>  total + nextItem.totalPrice, 0);
     this.cartTotalSubject.next(newTotal);
   }
@@ -91,7 +103,8 @@ export class CartService {
 
   private syncCart(){
     this.cartSubject.next(this.cart);
-    this.recalculateTotal();
+    this.recalculateTotalPrice();
+    this.recalculateTotalAmount();
     localStorage.setItem("shopping_cart", JSON.stringify(this.cart));
   }
 

@@ -9,14 +9,16 @@
     <h4>Total of the cart: {{this.$cartTotalObservable| async | currency:'USD'}}</h4>
 
     <button (click)="onCheckout()" mat-raised-button>Proceed to Checkout</button>
-    </div>
+  </div>
 
   <ng-template #emptyCart>
-    <p>Your cart is empty!!!</p>
+    <p class="empty-cart">Your Shopping Cart is Empty</p>
   </ng-template>
 
 </div>
 
 <ng-template #loading>
-  <p>Loading...</p>
+  <div class="spinner-container">
+    <mat-spinner [diameter]="500"></mat-spinner>
+  </div>
 </ng-template>

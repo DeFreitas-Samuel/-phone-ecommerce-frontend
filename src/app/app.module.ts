@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from "@angular/material/button";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -60,6 +61,7 @@ import { HeaderComponent } from './components/header/header.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
 
   ],
   providers: [HttpClient,

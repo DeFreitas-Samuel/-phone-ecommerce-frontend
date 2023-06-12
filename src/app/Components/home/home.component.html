@@ -1,11 +1,13 @@
-
 <div *ngIf="carousel$ | async as car; else loading">
     <app-carousel [carouselArray]="car"></app-carousel>
 
 </div>
 
 <ng-template #loading>
-    <p>Loading...</p>
+    <div class="spinner-container">
+        <mat-spinner [diameter]="500"></mat-spinner>
+    </div>
+
 </ng-template>
 
 

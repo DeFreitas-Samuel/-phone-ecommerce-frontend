@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from "../../services/products.service";
 import { Product } from "../../interfaces/product.interface";
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-list',

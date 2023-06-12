@@ -11,4 +11,14 @@ form {
   width: 25vw;
 }
 
-
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #2c2d2e80 ;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

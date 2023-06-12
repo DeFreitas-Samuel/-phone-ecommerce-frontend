@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService, CartService } from './services';
 
 
 @Component({
@@ -9,11 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
 
-  constructor() {}
+  constructor( private authService: AuthService, private cartService: CartService) {}
 
 
   ngOnInit() {
-
+    this.authService.checkSessionStorageForUser();
+    this.cartService.checkLocalStorageForPreviousCart();
   }
 
 }

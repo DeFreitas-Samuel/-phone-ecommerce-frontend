@@ -9,11 +9,13 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-  title = 'ShoPhone';
+  
   isLoggedIn: boolean = false;
   destroyer$ = new Subject<null>();
+  totalItemsInCart = 0;
+  isLoading: Boolean = false;
 
-  constructor(private auth: AuthService, private cartService: CartService) {
+  constructor(private authService: AuthService, private cartService: CartService) {
 
   }
 
@@ -23,9 +25,15 @@ export class HeaderComponent implements OnInit {
   }
 
   bootstrap() {
-    this.auth.checkSessionStorageForUser();
-    this.cartService.checkLocalStorageForPreviousCart();
-    this.auth.loggedInUser
+
+    this.cartService.cartNumberOfItems$
+      .pipe(
+        takeUntil(this.destroyer$)
+      )  
+      .subscribe((amount:number) => {
+        this.totalItemsInCart = amount;
+      })
+    this.authService.loggedInUser
       .pipe(
         takeUntil(this.destroyer$)
       )
@@ -35,7 +43,12 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout().subscribe();
+    this.isLoading = true;
+    this.authService.logout().subscribe({
+      complete: () => {
+        this.isLoading = false;
+      }
+    });
   }
 
   ngOnDestroy() {

@@ -1,7 +1,7 @@
 <div class="d-flex flex-row app-header">
     <a routerLink="home" class="d-flex flex-row header-link logo-link">
         <img src="../assets/images/videogame.png" alt="logo of the website" class="logo">
-        ShoPhone
+        ByteBazaar
     </a>
 
     <a routerLink="products" >Products</a>
@@ -16,8 +16,9 @@
         <a routerLink="dashboard" *ngIf="isLoggedIn" class="d-flex flex-row header-link">
             <img src="../assets/images/user.png">
             Dashboard</a>
-        <a routerLink="cart" class="d-flex flex-row header-link">
+        <a routerLink="cart" class="d-flex flex-row header-link cart-link">
             <img src="../assets/images/shopping-cart.png">
+            <div *ngIf="totalItemsInCart > 0" class="amount-badge">{{totalItemsInCart}}</div>
             My Cart</a>
         <a *ngIf="isLoggedIn" (click)="logout()" class="d-flex flex-row header-link">
             <img src="../assets/images/logout.png">
@@ -27,3 +28,7 @@
     
 
 </div>
+
+<div class="spinner-container" *ngIf="isLoading">
+    <mat-spinner [diameter]="500"></mat-spinner>
+  </div>

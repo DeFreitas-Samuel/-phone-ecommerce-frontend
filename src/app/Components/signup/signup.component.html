@@ -63,3 +63,7 @@
   </div>
   <button type="submit" [disabled]="!signUpForm.valid" mat-raised-button>Create Account</button>
 </form>
+
+<div class="spinner-container" *ngIf="isLoading">
+  <mat-spinner [diameter]="500"></mat-spinner>
+</div>
