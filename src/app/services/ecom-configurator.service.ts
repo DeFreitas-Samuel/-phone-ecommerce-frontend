@@ -22,18 +22,18 @@ export class EcomConfigurator {
 
         return of([
             {
-                imageUrl: 'http://localhost:8000/api/images/1.jpg',
-                alt: 'MacBook Pro image',
+                imageUrl: 'http://localhost:8000/api/images/MacbookAd.jpg',
+                alt: 'MacBook Pro Ad',
                 linkToRedirect: 'http://localhost:4200/product/1'
             },
             {
-                imageUrl: 'http://localhost:8000/api/images/2.jpg',
-                alt: 'Mac2',
+                imageUrl: 'http://localhost:8000/api/images/GalaxyBookAd.jpg',
+                alt: 'Galaxy Book Ad',
                 linkToRedirect: 'http://localhost:4200/product/2'
             },
             {
-                imageUrl: 'http://localhost:8000/api/images/3.jpg',
-                alt: 'Mac3',
+                imageUrl: 'http://localhost:8000/api/images/InspironAd.jpg',
+                alt: 'Inspiron Desktop Ad',
                 linkToRedirect: 'http://localhost:4200/product/3'
             }
         ])

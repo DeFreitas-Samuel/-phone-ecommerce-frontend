@@ -29,6 +29,7 @@ import { ShippingAddressComponent } from './components/checkout/shipping-address
 import { OrderSummaryComponent } from './components/checkout/order-summary/order-summary.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CanActivateIfLoggedIn } from './auth/auth.guard';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { CanActivateIfLoggedIn } from './auth/auth.guard';
     CreditCardFormComponent,
     ShippingAddressComponent,
     OrderSummaryComponent,
-    CarouselComponent
+    CarouselComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

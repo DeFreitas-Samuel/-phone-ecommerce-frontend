@@ -4,25 +4,28 @@
     cursor: pointer;
     z-index: 2;
     position: absolute;
-    top: 50%;
-    font-size: 50px;
+    line-height: calc(100vw / 7.75);
+    height: 100%;
+
   }
 
   &-container {
     position: relative;
-    height: 400px;
+    height: calc(100vw / 7.75);
   }
 
   &-indicator {
+    align-self: center;
     cursor: pointer;
     list-style-type: none;
     display: flex;
     flex-direction: row;
+    gap: 1em;
   }
 
   &-image {
-    max-height: 100%;
-    width: auto;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -30,7 +33,7 @@ button {
   outline: none;
   border: none;
   border-radius: 12px;
-  width: 40px;
+  width: 160px;
   height: 10px;
   position: relative;
   z-index: 1;
@@ -46,7 +49,7 @@ button::after {
   left: 0;
   top: 0;
   z-index: -1;
-  background-color: red;
+  background-color: #4faa7e;
   height: 100%;
 }
 
@@ -63,3 +66,18 @@ button.active::after {
     width: 100%;
   }
 }
+
+.left-arrow {
+  &:hover{
+    transform: scale(115%);
+    transition: transform .2s;
+  }
+}
+.right-arrow {
+  left:98vw;
+  &:hover{
+    transform: scale(115%);
+    transition: transform .2s;
+  }
+}
+

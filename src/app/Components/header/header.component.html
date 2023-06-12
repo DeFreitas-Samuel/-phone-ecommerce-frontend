@@ -1,0 +1,29 @@
+<div class="d-flex flex-row app-header">
+    <a routerLink="home" class="d-flex flex-row header-link logo-link">
+        <img src="../assets/images/videogame.png" alt="logo of the website" class="logo">
+        ShoPhone
+    </a>
+
+    <a routerLink="products" >Products</a>
+    
+    <div class="d-flex flex-row user-controls">
+        <a routerLink="login" *ngIf="!isLoggedIn" class="d-flex flex-row header-link">
+            <img src="../assets/images/log-in.png">
+            Login</a>
+        <a routerLink="signup" *ngIf="!isLoggedIn" class="d-flex flex-row header-link">
+            <img src="../assets/images/sign-up.png">
+            Sign Up</a>
+        <a routerLink="dashboard" *ngIf="isLoggedIn" class="d-flex flex-row header-link">
+            <img src="../assets/images/user.png">
+            Dashboard</a>
+        <a routerLink="cart" class="d-flex flex-row header-link">
+            <img src="../assets/images/shopping-cart.png">
+            My Cart</a>
+        <a *ngIf="isLoggedIn" (click)="logout()" class="d-flex flex-row header-link">
+            <img src="../assets/images/logout.png">
+            Logout</a>
+    </div>
+
+    
+
+</div>

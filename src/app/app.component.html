@@ -1,10 +1,4 @@
-<a routerLink="login" *ngIf="!isLoggedIn">Go to Login</a>
-<a routerLink="signup" *ngIf="!isLoggedIn">Go to Sign Up</a>
-<a routerLink="home">Go to home</a>
-<a routerLink="dashboard" *ngIf="isLoggedIn" >Dashboard</a>
-<a routerLink="products" >Products</a>
-<a routerLink="cart">My Cart</a>
-<button *ngIf="isLoggedIn" (click)="logout()" mat-raised-button>Logout</button>
+<app-header></app-header>
 
 <router-outlet></router-outlet>
 

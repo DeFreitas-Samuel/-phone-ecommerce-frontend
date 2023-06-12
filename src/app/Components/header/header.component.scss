@@ -1,0 +1,46 @@
+.logo {
+    height: 96px;
+    width: 96px;
+    &:hover{
+      transform: scale(105%);
+      transition: transform .2s;
+    }
+  }
+  
+  .app-header {
+    padding: 1em 1em;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+  
+  .header-link {
+    align-items: center;
+    gap: 15px;
+  
+    &:hover,
+    &:link,
+    &:active,
+    &:visited {
+      color: currentColor;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    &:hover{
+      transform: scale(105%);
+      transition: transform .2s;
+      color: #4faa7e !important;
+    }
+  
+  }
+  
+  
+  .user-controls {
+    gap: 40px;
+  }
+  
+  .logo-link {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #4faa7e !important;
+  }
