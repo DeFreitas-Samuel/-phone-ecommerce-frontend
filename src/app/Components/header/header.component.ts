@@ -45,6 +45,9 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.isLoading = true;
     this.authService.logout().subscribe({
+      error: () => {
+        this.isLoading = false;
+      },
       complete: () => {
         this.isLoading = false;
       }

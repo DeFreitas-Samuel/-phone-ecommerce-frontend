@@ -1,0 +1,21 @@
+.product {
+    &-container {
+       
+    }
+
+    &-link {
+        &:hover,
+        &:link,
+        &:active,
+        &:visited {
+            color: currentColor;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        font-weight: bold;
+    }
+    &-info {
+    
+    }
+}

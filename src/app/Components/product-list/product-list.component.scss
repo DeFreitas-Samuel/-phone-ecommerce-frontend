@@ -1,7 +1,18 @@
 .spinner-container {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    width: 100vw;
-    height: 85vh; 
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 85vh;
+}
+
+.product-container {
+  width: 200px
+}
+
+.product-list {
+  padding: 0 5vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+

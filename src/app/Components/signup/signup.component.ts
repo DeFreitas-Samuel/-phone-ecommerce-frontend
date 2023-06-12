@@ -39,7 +39,10 @@ export class SignupComponent implements OnInit {
 
 
     this.auth.signUp(this.user.toDTO()).subscribe({
-      error: (next: HttpErrorResponse) => this.errorMessage = next.error.error,
+      error: (next: HttpErrorResponse) => {
+        this.errorMessage = next.error.error;
+        this.isLoading = false;
+      },
       complete: () => {
         this.isLoading = false;
         this.router.navigate(['home'])

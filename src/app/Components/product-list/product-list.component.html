@@ -1,5 +1,5 @@
-<div *ngIf="productsArray$ | async as productsArray; else loading">
-  <div *ngFor="let product of productsArray">
+<div *ngIf="productsArray$ | async as productsArray; else loading" class="product-list" >
+  <div *ngFor="let product of productsArray" class="product-container">
     <app-product-item [id]="product.id" [name]="product.name" [price]="product.price"
       [imageUrl]="product.imageUrl"></app-product-item>
   </div>
@@ -7,6 +7,6 @@
 
 <ng-template #loading>
   <div class="spinner-container">
-    <mat-spinner [diameter]="500"></mat-spinner>
+    <mat-spinner [diameter]="250"></mat-spinner>
   </div>
 </ng-template>

@@ -30,7 +30,10 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.auth.login(this.user)
       .subscribe({
-        error: (next: HttpErrorResponse) => this.errorMessage = next.error.error,
+        error: (next: HttpErrorResponse) => {
+          this.errorMessage = next.error.error
+          this.isLoading = false;
+        },
         complete: () => {
           this.isLoading = false;
           this.router.navigate(['home']);
