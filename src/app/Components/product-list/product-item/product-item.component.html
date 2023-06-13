@@ -1,13 +1,14 @@
-<div class="product-container">
+<div class="product-container d-flex">
     <div class="product-image-container">
         <img src="{{imageUrl}}" alt="Image of the product" class="product-image">
     </div>
 
     <div class="d-flex product-info">
         <a [routerLink]="['/product', id]" class="product-link">{{name}}</a>
+        <p class="product-description">{{description}}</p>
         <p>{{price | currency:'USD'}}</p>
     </div>
 
 
-    <button (click)="onAddToCartFromList()" mat-raised-button>Add to cart</button>
+    <button (click)="onAddToCartFromList()" class="button-cart">Add to cart</button>
 </div>
