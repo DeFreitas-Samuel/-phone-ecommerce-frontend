@@ -31,6 +31,7 @@ import { OrderSummaryComponent } from './components/checkout/order-summary/order
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CanActivateIfLoggedIn } from './auth/auth.guard';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { HeaderComponent } from './components/header/header.component';
     ShippingAddressComponent,
     OrderSummaryComponent,
     CarouselComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
