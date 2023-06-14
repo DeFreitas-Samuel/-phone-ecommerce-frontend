@@ -1,50 +1,53 @@
 .product {
-    &-container {
-       flex-direction: column;
-       gap: 2em;
-       padding: 0 2em 2em 2em;
-    }
+  &-container {
+    flex-direction: column;
+    gap: 2em;
+    padding: 0 2em 2em 2em;
+  }
 
-    &-link {
-        &:hover,
-        &:link,
-        &:active,
-        &:visited {
-            color: currentColor;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        font-size: 2rem;
-        font-weight: bold;
+  &-link {
+    &:hover,
+    &:link,
+    &:active,
+    &:visited {
+      color: currentColor;
+      text-decoration: none;
+      cursor: pointer;
     }
-    &-info {
-        flex-direction: column;
-        font-size: 1.5rem;
-        gap: 2em;
-    }
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 40px;
+  }
+  &-info {
+    flex-direction: column;
+    font-size: 1.5rem;
+    gap: 2em;
+  }
 
-    &-image-container{
-        align-self: center;
-    }
+  &-image-container {
+    display: flex;
+    align-items: center;
+    align-self: center;
+  }
 
-    &-description {
-        font-size: 0.75em;
-    }
+  &-description {
+    font-size: 0.75em;
+  }
 }
 
-.button-cart{
-    background-color: white;
-    border: solid black 1px;
-    border-radius: 15px;
-    width: 35%;
-    height:40px;
-    cursor: pointer;
-    font-weight: bold;
+.button-cart {
+  background-color: white;
+  border: solid black 1px;
+  border-radius: 15px;
+  width: 35%;
+  height: 40px;
+  cursor: pointer;
+  font-weight: bold;
 
-    &:hover{
-        color: white;
-        background-color: var(--main-color);
-        border: solid var(--main-color) 1px;
-        transition: color .5s, background-color .5s, border .5s;
-    }
+  &:hover {
+    color: white;
+    background-color: var(--main-color);
+    border: solid var(--main-color) 1px;
+    transition: color 0.5s, background-color 0.5s, border 0.5s;
+  }
 }

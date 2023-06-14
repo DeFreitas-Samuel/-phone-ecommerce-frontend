@@ -74,7 +74,7 @@ button.active::after {
   }
 }
 .right-arrow {
-  left:98vw;
+  left:calc(100vw - 3.1vw);
   &:hover{
     transform: scale(115%);
     transition: transform .2s;
