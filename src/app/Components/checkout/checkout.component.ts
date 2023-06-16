@@ -4,6 +4,7 @@ import { PurchaseService } from 'src/app/services';
 import { ShippingAddress } from 'src/app/interfaces/shipping-address.interface';
 import { CreditCardFormComponent } from './credit-card-form/credit-card-form.component';
 import { ShippingAddressComponent } from './shipping-address/shipping-address.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -16,13 +17,16 @@ export class CheckoutComponent implements OnInit {
   @ViewChild(ShippingAddressComponent, { static: false }) shippingAddressFormComponent!: ShippingAddressComponent;
   creditCardFormStatus: string = 'INVALID';
   shippingAddressFormStatus: string = 'INVALID';
+  isLoading: boolean = false;
+
 
   paymentTypeForm: FormGroup = this.fb.group({
     paymentType: ['Debit/Credit Card', [Validators.required]]
   })
 
   constructor(private fb: FormBuilder, 
-    private purchaseService: PurchaseService) { }
+    private purchaseService: PurchaseService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -50,10 +54,19 @@ export class CheckoutComponent implements OnInit {
       last4DigitsOfCard = this.creditCardFormComponent.last4DigitsOfCard;
     }
   
-    
+    this.isLoading = true;
     const shippingAddress: ShippingAddress | null = this.shippingAddressFormComponent.shippingAddress;
 
-    this.purchaseService.purchase(paymentTypeSelected, last4DigitsOfCard, shippingAddress);
+    this.purchaseService.purchase(paymentTypeSelected, last4DigitsOfCard, shippingAddress).subscribe({
+      complete: ()=>{
+        this.isLoading = false;
+        this.router.navigate(['dashboard']);
+      },
+      error: (response) => {
+        console.error(response)
+        this.isLoading = false;
+      }
+    })
 
     
   }

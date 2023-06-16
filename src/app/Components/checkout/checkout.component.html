@@ -18,3 +18,7 @@
 <app-shipping-address (statusChanged)="onStatusChangedOnShippingAddressForm($event)"></app-shipping-address>
 
 <button mat-raised-button (click)="onPurchase()" [disabled]="!isButtonDisabled">Purchase</button>
+
+<div class="spinner-container" *ngIf="isLoading">
+    <mat-spinner [diameter]="200"></mat-spinner>
+  </div>

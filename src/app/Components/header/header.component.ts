@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, CartService } from "../../services";
 import { Subject, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   totalItemsInCart = 0;
   isLoading: Boolean = false;
 
-  constructor(private authService: AuthService, private cartService: CartService) {
+  constructor(private authService: AuthService, private cartService: CartService, private router: Router) {
 
   }
 
@@ -50,6 +51,7 @@ export class HeaderComponent implements OnInit {
       },
       complete: () => {
         this.isLoading = false;
+        this.router.navigate(['login']);
       }
     });
   }

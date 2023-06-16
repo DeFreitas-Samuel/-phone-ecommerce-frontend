@@ -28,11 +28,7 @@ export class PurchaseService {
     }
 
  
-    this.http.post(`${this.routes.base + this.routes.purchase.purchase}`, order, { observe: 'response' }).subscribe((response:HttpResponse<{}>) => {
-      if(response.ok && response.status === 200){
-        this.cartService.emptyCart();
-      }
-    })
+    return this.http.post(`${this.routes.base + this.routes.purchase.purchase}`, order, { observe: 'response' });
   }
 
   
