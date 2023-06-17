@@ -88,14 +88,7 @@ h3 {
   }
 }
 
-.product-image {
-  width: 100%;
-  max-height: 100%;
-  &-container{
-    height:200px;
-    width:200px;
-  }
-}
+
 
 
 @for $i from 1 through 4 {

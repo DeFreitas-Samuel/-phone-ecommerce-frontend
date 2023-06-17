@@ -1,25 +1,25 @@
-<div *ngIf="product$ | async as product; else loading">
+<div *ngIf="product$ | async as product; else loading" class="product-detail-container d-flex flex-row">
     <br>
     <!--TODO add utility classes done in the global css -->
-    <div class="product-image-container">
+    <div class="product-image-container d-flex flex-column justify-content-center">
         <img src="{{product.imageUrl}}" alt="Image of the product" class="product-image">
     </div>
-    <p>{{product.name}}</p>
-    <br>
-    <p>{{product.price | currency:'USD'}}</p>
-    <br>
-    <p>{{product.description}}</p>
-    <br>
-    <p>{{product.specifications}}</p>
+    <div class="product-info-container">
+        <div class="d-flex flex-column product-details-container">
+            <p class="product-title">{{product.name}}</p>
+            <p class="product-price">{{product.price | currency:'USD'}}</p>
+            <p class="product-description">{{product.description}}</p>
+            <p class="product-specification">{{product.specifications}}</p>
+        </div>
+        <div class="quantity-selector">
+            <button (click)="onSubtractQuantity()">-</button>
+            <span>{{quantity}}</span>
+            <button (click)="onAddQuantity()">+</button>
+        </div>
 
-    <div class="quantity-selector">
-        <button (click)="onSubtractQuantity()">-</button>
-        <p>{{quantity}}</p>
-        <button (click)="onAddQuantity()">+</button>
+        <button (click)="onAddToCartFromDetail()" mat-raised-button>Add to cart</button>
+        <button (click)="onBuyNow()" mat-raised-button>Buy Now</button>
     </div>
-
-    <button (click)="onAddToCartFromDetail()" mat-raised-button>Add to cart</button>
-    <button (click)="onBuyNow()" mat-raised-button>Buy Now</button>
 </div>
 
 
