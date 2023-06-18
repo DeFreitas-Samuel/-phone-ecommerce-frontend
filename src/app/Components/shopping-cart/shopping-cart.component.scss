@@ -1,5 +1,4 @@
 .empty-cart {
-  margin-top: 1em;
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
@@ -11,4 +10,31 @@
   width: 100vw;
   height: 85vh;
   max-width: 100vw;
+}
+
+.shopping-cart {
+  margin: 8em;
+}
+
+.shopping-cart-content {
+  justify-content: space-between;
+}
+
+.proceed-checkout-component {
+  position: sticky;
+  top: 200px;
+  margin-right: 20em;
+  border: 1px solid #eee;
+  height: fit-content;
+  padding: 3em;
+  border-radius: 15px;
+}
+
+.estimated-total {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.checkout-button {
+  width: 100%;
 }

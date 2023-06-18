@@ -1,14 +1,15 @@
-<div *ngIf="shoppingCart$|async as shoppingCart; else loading">
+<div *ngIf="shoppingCart$|async as shoppingCart; else loading" class="shopping-cart">
 
-  <div *ngIf="shoppingCart.length !== 0; else emptyCart">
+  <div *ngIf="shoppingCart.length !== 0; else emptyCart" class="d-flex flex-row shopping-cart-content">
 
-    <div *ngFor="let cartItem of shoppingCart ">
-      <app-shopping-cart-item [cartItem]="cartItem"></app-shopping-cart-item>
+    <div>
+      <app-shopping-cart-item *ngFor="let cartItem of shoppingCart" [cartItem]="cartItem"></app-shopping-cart-item>
     </div>
+    <div class="proceed-checkout-component">
+      <h4 class="estimated-total">Estimated Total: {{this.$cartTotalObservable| async | currency:'USD'}}</h4>
 
-    <h4>Total of the cart: {{this.$cartTotalObservable| async | currency:'USD'}}</h4>
-
-    <button (click)="onCheckout()" mat-raised-button>Proceed to Checkout</button>
+      <button class="checkout-button" (click)="onCheckout()" mat-raised-button>Proceed to Checkout</button>
+    </div>
   </div>
 
   <ng-template #emptyCart>

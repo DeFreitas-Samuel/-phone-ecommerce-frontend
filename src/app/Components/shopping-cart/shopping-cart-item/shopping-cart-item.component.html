@@ -1,16 +1,22 @@
-<img src="{{cartItem.imageUrl}}" alt="image of the product" height="150" width="150">
-<p>Name: {{cartItem.name}}</p>
-<p>Unit Price: {{cartItem.unitPrice | currency:'USD'}}</p>
-<p>Total price: {{cartItem.totalPrice | currency:'USD'}}</p>
-<p>Quantity: {{cartItem.quantity}}</p>
+<div class="shopping-cart-item-container">
+  <div class="d-flex flex-row shopping-cart-item-info">
+    <div class="product-image-container">
+      <img src="{{cartItem.imageUrl}}" alt="image of the product" class="product-image">
+    </div>
 
-<div class="quantity-selector">
-  <button (click)="onDeleteItem()" mat-raised-button>Delete</button>
-  <button (click)="onSubtractQuantity()" >-</button>
-  <p>{{cartItem.quantity}}</p>
-  <button (click)="onAddQuantity()">+</button>
+    <div>
+      <a class="shopping-cart-item-link" routerLink="../product/{{cartItem.product_id}}">{{cartItem.name}}</a>
+      <p class="shopping-cart-item-description">Unit Price: {{cartItem.unitPrice | currency:'USD'}}</p>
+      <p class="shopping-cart-item-description">Total price: {{cartItem.totalPrice | currency:'USD'}}</p>
+      <p class="shopping-cart-item-description">Quantity: {{cartItem.quantity}}</p>
+    </div>
+  </div>
+  <div class="d-flex flex-row shopping-cart-item-controls">
+    <div class="quantity-selector d-flex flex-row">
+      <button (click)="onSubtractQuantity()">-</button>
+      <span>{{cartItem.quantity}}</span>
+      <button (click)="onAddQuantity()">+</button>
+    </div>
+    <button class="delete-button"  (click)="onDeleteItem()" mat-raised-button>Delete</button>
+  </div>
 </div>
-
-
-
-<hr>
