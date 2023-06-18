@@ -4,21 +4,19 @@
     <div class="product-image-container d-flex flex-column justify-content-center">
         <img src="{{product.imageUrl}}" alt="Image of the product" class="product-image">
     </div>
-    <div class="product-info-container">
-        <div class="d-flex flex-column product-details-container">
-            <p class="product-title">{{product.name}}</p>
-            <p class="product-price">{{product.price | currency:'USD'}}</p>
-            <p class="product-description">{{product.description}}</p>
-            <p class="product-specification">{{product.specifications}}</p>
-        </div>
-        <div class="quantity-selector">
+    <div class="product-info-container d-flex flex-column">
+        <p class="product-title">{{product.name}}</p>
+        <p class="product-price">{{product.price | currency:'USD'}}</p>
+        <p class="product-info-title product-info">Description</p>
+        <p class="product-info-content product-info">{{product.description}}</p>
+        <p class="product-info-title product-info">Specifications</p>
+        <p class="product-info-content product-info" >{{product.specifications}}</p>
+        <div class="quantity-selector d-flex flex-row">
             <button (click)="onSubtractQuantity()">-</button>
             <span>{{quantity}}</span>
             <button (click)="onAddQuantity()">+</button>
         </div>
-
-        <button (click)="onAddToCartFromDetail()" mat-raised-button>Add to cart</button>
-        <button (click)="onBuyNow()" mat-raised-button>Buy Now</button>
+        <button class="add-to-cart-button" (click)="onAddToCartFromDetail()" mat-raised-button>Add to cart</button>
     </div>
 </div>
 
