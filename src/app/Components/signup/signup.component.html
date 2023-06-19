@@ -1,68 +1,57 @@
-<form [formGroup]="signUpForm" (ngSubmit)="signUp()">
-  <div class="form-input">
-    <label for="firstname">Firstname *</label>
-    <input id="firstname"
-           type="text"
-           placeholder="Enter your firstname"
-           formControlName="firstname">
-    <div *ngIf="!signUpForm.get('firstname')?.valid && signUpForm.get('firstname')?.touched"
-         class="input-error">
-      The firstname must not be empty
-    </div>
+<div class="d-flex">
+  <div class="image-container">
+    <img src="../../../assets/images/login-signup-image2.jpg">
   </div>
-  <div class="form-input">
-    <label for="lastname">Lastname *</label>
-    <input id="lastname"
-           name="lastname"
-           type="text"
-           placeholder="Enter your lastname"
-           formControlName="lastname">
-    <div *ngIf="!signUpForm.get('lastname')?.valid && signUpForm.get('lastname')?.touched"
-          class="input-error">
-      The lastname must not be empty
-    </div>
-  </div>
+  <div class="d-flex signup-form-container">
+    <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+      <div class="form-input">
+        <label class="form-label" for="firstname">Firstname *</label>
+        <input class="input-text-form" id="firstname" type="text" placeholder="Enter your firstname" formControlName="firstname">
+        <div *ngIf="!signUpForm.get('firstname')?.valid && signUpForm.get('firstname')?.touched" class="input-error">
+          The firstname must not be empty
+        </div>
+      </div>
+      <div class="form-input">
+        <label class="form-label" for="lastname">Lastname *</label>
+        <input class="input-text-form" id="lastname" name="lastname" type="text" placeholder="Enter your lastname" formControlName="lastname">
+        <div *ngIf="!signUpForm.get('lastname')?.valid && signUpForm.get('lastname')?.touched" class="input-error">
+          The lastname must not be empty
+        </div>
+      </div>
 
-  <div class="form-input">
-    <label for="birthdate">Birthdate *</label>
-    <input id="birthdate"
-           type="date"
-           placeholder="Enter your birthdate"
-           formControlName= "birthdate">
-    <div  *ngIf="!signUpForm.get('birthdate')?.valid && signUpForm.get('birthdate')?.touched"
-          class="input-error">
-      The birthdate must not be empty and be a valid date
-    </div>
-  </div>
+      <div class="form-input">
+        <label class="form-label" for="birthdate">Birthdate *</label>
+        <input class="input-text-form" id="birthdate" type="date" placeholder="Enter your birthdate" formControlName="birthdate">
+        <div *ngIf="!signUpForm.get('birthdate')?.valid && signUpForm.get('birthdate')?.touched" class="input-error">
+          The birthdate must not be empty and be a valid date
+        </div>
+      </div>
 
-  <div class="form-input">
-    <label for="email">Email *</label>
-    <input id="email"
-           type="email"
-           placeholder="Enter your email"
-           formControlName= "email">
-    <div  *ngIf="!signUpForm.get('email')?.valid && signUpForm.get('email')?.touched"
-          class="input-error">
-      The email must not be empty and be a valid email
-    </div>
+      <div class="form-input">
+        <label class="form-label" for="email">Email *</label>
+        <input class="input-text-form" id="email" type="email" placeholder="Enter your email" formControlName="email">
+        <div *ngIf="!signUpForm.get('email')?.valid && signUpForm.get('email')?.touched" class="input-error">
+          The email must not be empty and be a valid email
+        </div>
 
+      </div>
+      <div class="form-input">
+        <label class="form-label" for="password">Password *</label>
+        <input  class="input-text-form" id="password" type="password" formControlName="password" placeholder="Create your password">
+        <div *ngIf="!signUpForm.get('password')?.valid && signUpForm.get('password')?.touched" class="input-error">
+          The password must not be empty, and must be at least 8 characters long
+        </div>
+      </div>
+      <div *ngIf="errorMessage" class="input-error">
+        {{errorMessage}}
+      </div>
+      <button class="action-button" type="submit" [disabled]="!signUpForm.valid" mat-raised-button>Create Account</button>
+
+      <p class="login-recommendation">Do you already have an account? <a routerLink="../signup">Login</a></p>
+    </form>
   </div>
-  <div class="form-input">
-    <label for="password">Password *</label>
-    <input id="password"
-           type="password"
-           formControlName= "password"
-           placeholder="Create your password">
-    <div  *ngIf="!signUpForm.get('password')?.valid && signUpForm.get('password')?.touched"
-          class="input-error">
-      The password must not be empty, and must be at least 8 characters long
-    </div>
-  </div>
-  <div *ngIf="errorMessage" class="input-error">
-    {{errorMessage}}
-  </div>
-  <button type="submit" [disabled]="!signUpForm.valid" mat-raised-button>Create Account</button>
-</form>
+</div>
+
 
 <div class="spinner-container" *ngIf="isLoading">
   <mat-spinner [diameter]="200"></mat-spinner>

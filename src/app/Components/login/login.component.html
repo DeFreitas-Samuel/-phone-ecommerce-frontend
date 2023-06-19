@@ -1,41 +1,38 @@
-<form #loginForm = "ngForm" (ngSubmit)="login()">
-
-  <div class="form-input">
-    <label for="email">Email *</label>
-    <input id="email"
-           name="email"
-           type="email"
-           placeholder="Enter your email"
-           [(ngModel)]="user.email"
-           #email="ngModel"
-           email
-           required>
-    <div [hidden]="email.valid || email.pristine" class="input-error">
-      The email must not be empty and be a valid email
-    </div>
-
+<div class="d-flex">
+  <div class="image-container">
+    <img src="../../../assets/images/login-signup-image2.jpg">
   </div>
-  <div class="form-input">
-    <label for="password">Password *</label>
-    <input id="password"
-           name="password"
-           type="password"
-           placeholder="Create your password"
-           [(ngModel)]="user.password"
-           #password="ngModel"
-           required>
-    <div *ngIf="!password.pristine && !password.valid" class="input-error">
-      The password must not be empty
-    </div>
-    <div *ngIf="errorMessage" class="input-error">
-      {{errorMessage}}
-    </div>
+  <div class="d-flex login-form-container">
+    <form #loginForm="ngForm" (ngSubmit)="login()">
+
+      <div class="form-input">
+        <label class="form-label" for="email">Email</label>
+        <input class="input-text-form" id="email" name="email" type="email" placeholder="Enter your email" [(ngModel)]="user.email"
+          #email="ngModel" email required>
+        <div [hidden]="email.valid || email.pristine" class="input-error">
+          The email must not be empty and be a valid email
+        </div>
+
+      </div>
+      <div class="form-input">
+        <label class="form-label" for="password">Password</label>
+        <input class="input-text-form" id="password" name="password" type="password" placeholder="Create your password"
+          [(ngModel)]="user.password" #password="ngModel" required>
+        <div *ngIf="!password.pristine && !password.valid" class="input-error">
+          The password must not be empty
+        </div>
+        <div *ngIf="errorMessage" class="input-error">
+          {{errorMessage}}
+        </div>
+      </div>
+      <button class="action-button" type="submit" [disabled]="!loginForm.form.valid" mat-raised-button>Login</button>
+      
+      <p class="signup-recommendation">You don't have an account? <a routerLink="../signup">Sign Up</a></p>
+      
+
+    </form>
   </div>
-  <button type="submit" [disabled]="!loginForm.form.valid" mat-raised-button>Login</button>
-
-
-</form>
-
+</div>
 <div class="spinner-container" *ngIf="isLoading">
   <mat-spinner [diameter]="200"></mat-spinner>
 </div>
