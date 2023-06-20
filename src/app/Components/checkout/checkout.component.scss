@@ -10,3 +10,17 @@
     left: 0;
     z-index: 100;
   }
+
+.purchase-grid {
+  display: grid;
+  padding: 5em;
+  grid-template-columns:  2fr 1fr;
+}
+
+.order-summary-container {
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.46);
+  width: fit-content;
+  height: fit-content;
+  padding: 1em;
+  border-radius: 15px;
+}

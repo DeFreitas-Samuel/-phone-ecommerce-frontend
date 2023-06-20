@@ -1,24 +1,33 @@
-<app-order-summary></app-order-summary>
+<div class="purchase-grid">
+    <div>
+        <app-shipping-address (statusChanged)="onStatusChangedOnShippingAddressForm($event)"></app-shipping-address>
 
 
-<form [formGroup]="paymentTypeForm">
-    <input type="radio" id="credit-card" name="paymentType" value="Debit/Credit Card" formControlName="paymentType">
-    <label for="credit-card">Credit Card</label>
+        <form [formGroup]="paymentTypeForm">
+            <input type="radio" id="credit-card" name="paymentType" value="Debit/Credit Card"
+                formControlName="paymentType">
+            <label for="credit-card">Credit Card</label>
 
-    <input type="radio" id="cash" name="paymentType" value="Cash on Delivery" formControlName="paymentType">
-    <label for="cash">Cash on Arrival</label>
-</form>
+            <input type="radio" id="cash" name="paymentType" value="Cash on Delivery" formControlName="paymentType">
+            <label for="cash">Cash on Arrival</label>
+        </form>
 
 
 
-<div *ngIf="paymentTypeForm.get('paymentType')?.value === 'Debit/Credit Card'">
-    <app-credit-card-form (statusChanged)="onStatusChangedOnCreditCardForm($event)"></app-credit-card-form>
+        <div *ngIf="paymentTypeForm.get('paymentType')?.value === 'Debit/Credit Card'">
+            <app-credit-card-form (statusChanged)="onStatusChangedOnCreditCardForm($event)"></app-credit-card-form>
+        </div>
+
+
+
+
+
+        <div class="spinner-container" *ngIf="isLoading">
+            <mat-spinner [diameter]="200"></mat-spinner>
+        </div>
+    </div>
+    <div class="order-summary-container">
+        <app-order-summary></app-order-summary>
+        <button mat-raised-button (click)="onPurchase()" [disabled]="!isButtonDisabled">Purchase</button>
+    </div>
 </div>
-
-<app-shipping-address (statusChanged)="onStatusChangedOnShippingAddressForm($event)"></app-shipping-address>
-
-<button mat-raised-button (click)="onPurchase()" [disabled]="!isButtonDisabled">Purchase</button>
-
-<div class="spinner-container" *ngIf="isLoading">
-    <mat-spinner [diameter]="200"></mat-spinner>
-  </div>

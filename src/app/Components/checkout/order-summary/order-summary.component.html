@@ -1,8 +1,8 @@
-<h3>Order Summary</h3>
-<div *ngFor="let cartItem of $cartCopyObservable | async ">
+<p class="order-title">Order Summary</p>
+<div *ngFor="let cartItem of $cartCopyObservable | async " class="order-item">
   <div>Name: {{cartItem.name}}</div>
   <div>Total Price: {{cartItem.totalPrice | currency:'USD'}}</div>
   <div>Quantity: {{cartItem.quantity}}</div>
   <br>
 </div>
-<h4>Total of the cart: {{this.$cartTotalObservable | async | currency:'USD'}}</h4>
+<p class="order-total">Total of the cart: {{this.$cartTotalObservable | async | currency:'USD'}}</p>
