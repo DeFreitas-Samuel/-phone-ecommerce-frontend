@@ -1,33 +1,42 @@
 <div class="purchase-grid">
     <div>
-        <app-shipping-address (statusChanged)="onStatusChangedOnShippingAddressForm($event)"></app-shipping-address>
-
-
-        <form [formGroup]="paymentTypeForm">
-            <input type="radio" id="credit-card" name="paymentType" value="Debit/Credit Card"
-                formControlName="paymentType">
-            <label for="credit-card">Credit Card</label>
-
-            <input type="radio" id="cash" name="paymentType" value="Cash on Delivery" formControlName="paymentType">
-            <label for="cash">Cash on Arrival</label>
-        </form>
-
-
-
-        <div *ngIf="paymentTypeForm.get('paymentType')?.value === 'Debit/Credit Card'">
-            <app-credit-card-form (statusChanged)="onStatusChangedOnCreditCardForm($event)"></app-credit-card-form>
+        <div>
+            <h4 class="form-title">Shipment Adress</h4>
+            <app-shipping-address (statusChanged)="onStatusChangedOnShippingAddressForm($event)"></app-shipping-address>
         </div>
+        <div>
+            <h4 class="form-title">Payment Type</h4>
+            <form [formGroup]="paymentTypeForm">
+                <input type="radio" id="credit-card" name="paymentType" value="Debit/Credit Card"
+                    formControlName="paymentType">
+                <label for="credit-card">Credit Card</label>
+
+                <input type="radio" id="cash" name="paymentType" value="Cash on Delivery" formControlName="paymentType">
+                <label for="cash">Cash on Arrival</label>
+            </form>
 
 
 
+            <div *ngIf="paymentTypeForm.get('paymentType')?.value === 'Debit/Credit Card'">
+                <app-credit-card-form (statusChanged)="onStatusChangedOnCreditCardForm($event)"></app-credit-card-form>
+            </div>
 
-
-        <div class="spinner-container" *ngIf="isLoading">
-            <mat-spinner [diameter]="200"></mat-spinner>
         </div>
     </div>
-    <div class="order-summary-container">
-        <app-order-summary></app-order-summary>
-        <button mat-raised-button (click)="onPurchase()" [disabled]="!isButtonDisabled">Purchase</button>
+
+
+
+    <div>
+        <h3 class="order-title">Order Summary</h3>
+        <div class="order-summary-container">
+            <app-order-summary></app-order-summary>
+            <button class="action-button" mat-raised-button (click)="onPurchase()"
+                [disabled]="!isButtonDisabled">Purchase</button>
+        </div>
+
     </div>
+</div>
+
+<div class="spinner-container" *ngIf="isLoading">
+    <mat-spinner [diameter]="200"></mat-spinner>
 </div>

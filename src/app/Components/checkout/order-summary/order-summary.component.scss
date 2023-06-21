@@ -1,11 +1,18 @@
 .order-item {
-    margin: 1em 0;
+    margin: 1em 0 2em 0;
 }
 
 .order-total {
     font-size: 1.5em;
+    text-align: right;
 }
 
-.order-title {
-    font-size: 1.5em;
+.order-item-content {
+    justify-content: space-between;
+    width: 20vw;
+    font-size: 1.25rem;
+}
+
+.order-item-name {
+    color: var(--main-color);
 }

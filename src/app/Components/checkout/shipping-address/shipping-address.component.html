@@ -3,6 +3,7 @@
     <label for="city">Address *</label>
     <input id="address"
            type="text"
+           class="input-text-form"
            placeholder="Enter your address"
            formControlName= "address">
     <div  *ngIf="!shippingAddressForm.get('address')?.valid && shippingAddressForm.get('address')?.touched"
@@ -14,6 +15,7 @@
     <label for="city">City *</label>
     <input id="city"
            type="text"
+           class="input-text-form"
            placeholder="Enter your city"
            formControlName= "city">
     <div  *ngIf="!shippingAddressForm.get('city')?.valid && shippingAddressForm.get('city')?.touched"
@@ -25,6 +27,7 @@
     <label for="state">State *</label>
     <input id="state"
            type="text"
+           class="input-text-form"
            placeholder="Enter your state"
            formControlName= "state">
     <div  *ngIf="!shippingAddressForm.get('state')?.valid && shippingAddressForm.get('state')?.touched"
@@ -36,6 +39,7 @@
     <label for="phoneNumber">Phone Number *</label>
     <input id="phoneNumber"
            type="text"
+           class="input-text-form"
            placeholder="Enter your phone number"
            formControlName= "phoneNumber">
     <div  *ngIf="!shippingAddressForm.get('phoneNumber')?.valid && shippingAddressForm.get('phoneNumber')?.touched"
@@ -47,6 +51,7 @@
     <label for="zipCode">Zip Code *</label>
     <input id="zipCode"
            type="text"
+           class="input-text-form"
            placeholder="Enter your Zip Code"
            formControlName= "zipCode">
     <div  *ngIf="!shippingAddressForm.get('zipCode')?.valid && shippingAddressForm.get('zipCode')?.touched"
