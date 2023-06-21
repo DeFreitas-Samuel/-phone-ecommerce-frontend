@@ -10,13 +10,14 @@
     &:link,
     &:active,
     &:visited {
-      color: currentColor;
+
       text-decoration: none;
       cursor: pointer;
     }
     font-size: 2rem;
     font-weight: 700;
     line-height: 40px;
+    color: var(--main-color);
   }
   &-info {
     flex-direction: column;

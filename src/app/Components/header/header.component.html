@@ -15,20 +15,20 @@
     
     <div class="d-flex flex-row user-controls">
         <a routerLink="login" *ngIf="!isLoggedIn" class="d-flex flex-row header-link">
-            <img src="../assets/images/log-in.png">
+            <i class="fa-solid fa-right-to-bracket" style="color: var(--main-color); transform: scale(1.25);"></i>
             Login</a>
         <a routerLink="signup" *ngIf="!isLoggedIn" class="d-flex flex-row header-link">
-            <img src="../assets/images/sign-up.png">
+            <i class="fa-solid fa-user-plus" style="color: var(--main-color); transform: scale(1.25);"></i>
             Sign Up</a>
         <a routerLink="dashboard" *ngIf="isLoggedIn" class="d-flex flex-row header-link">
-            <img src="../assets/images/user.png">
+            <i class="fa-solid fa-user" style="color: var(--main-color); transform: scale(1.25);"></i>
             Dashboard</a>
         <a routerLink="cart" class="d-flex flex-row header-link cart-link">
-            <img src="../assets/images/shopping-cart.png">
+            <i class="fa-sharp fa-solid fa-cart-shopping" style="color: var(--main-color); transform: scale(1.25);"></i>
             <div *ngIf="totalItemsInCart > 0" class="amount-badge">{{totalItemsInCart}}</div>
             My Cart</a>
         <a *ngIf="isLoggedIn" (click)="logout()" class="d-flex flex-row header-link">
-            <img src="../assets/images/logout.png">
+            <i class="fa-solid fa-right-from-bracket" style="color: var(--main-color); transform: scale(1.25);"></i>
             Logout</a>
     </div>
 

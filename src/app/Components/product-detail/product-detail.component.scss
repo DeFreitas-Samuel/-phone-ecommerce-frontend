@@ -46,6 +46,7 @@
     &-title {
       font-weight: 700;
       margin-top: 1em;
+      color: var(--main-color);
     }
     &-container {
       gap: 2em;
@@ -60,6 +61,7 @@
     font-size: 3rem;
     font-weight: 700;
     line-height: 1.3;
+    color: var(--main-color);
   }
   &-price {
     font-size: 2rem;

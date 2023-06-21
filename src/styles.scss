@@ -2,6 +2,8 @@
 @import '~normalize.css';
 @import '../src/custom-theme.scss';
 
+//#4faa7e  #102950 #501010
+
 
 * {
   box-sizing: border-box;
@@ -12,7 +14,8 @@ body {
 }
 
 :root{
-  --main-color: #4faa7e;
+  --main-color: #102950;
+  --contrast-color: #3397fc;
 }
 
 
