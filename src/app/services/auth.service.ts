@@ -67,8 +67,6 @@ export class AuthService {
             sessionStorage.setItem('access_token', response.access_token);
             sessionStorage.setItem("logged_user", JSON.stringify(response.user));
             this.updateCurrentLoggedUser(response.user);
-            console.log('Access token set:', response.access_token);
-            console.log('Current logged user set:', response.user);
           }
         })
       );
@@ -81,7 +79,7 @@ export class AuthService {
     return this.http.post(`${this.routes.base}${this.routes.auth.logout}`, { withCredentials: true })
       .pipe(
         tap( () => {
-          localStorage.removeItem("access_token");
+          sessionStorage.removeItem("access_token");
           this.updateCurrentLoggedUser(null);
           sessionStorage.removeItem("logged_user");
         })

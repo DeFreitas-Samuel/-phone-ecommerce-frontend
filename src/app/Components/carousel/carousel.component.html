@@ -1,13 +1,13 @@
 <div class="d-flex flex-column">
     <div class="carousel-container">
         <div class="carousel-arrow left-arrow" (click)="previousImage()">
-            <img src="../../../assets/images/left-arrow.png" >
+            <i class="fa-solid fa-less-than" style="color: #000000; transform: scale(3);"></i>
         </div>
         <a [href]="currentItem.linkToRedirect">
             <img [src]="currentItem.imageUrl" [alt]="currentItem.alt" class="carousel-image">
         </a>
         <div class="carousel-arrow right-arrow" (click)="nextImage()">
-            <img src="../../../assets/images/right-arrow.png" >
+            <i class="fa-solid fa-less-than" style="color: #000000; transform: scale(-3);"></i>
         </div>
         
     </div>

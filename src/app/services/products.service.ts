@@ -2,7 +2,7 @@ import {Inject, Injectable, OnInit} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {ROUTES} from "../token/routes.token";
 import {RouteType} from "../backend.routes";
-import {BehaviorSubject, catchError, EMPTY} from "rxjs";
+import {BehaviorSubject, catchError, EMPTY, Observable} from "rxjs";
 import {Product} from "../interfaces/product.interface";
 
 @Injectable({
@@ -14,15 +14,9 @@ export class ProductsService {
   //TODO look for a way to sort by price
   //todo look for a way to implement pagination
 
-
-
-  private products: Product[]|null = null;
-
-  private productsSubject = new BehaviorSubject<Product[]|null>(null);
-
   constructor(private http: HttpClient, @Inject(ROUTES) private readonly routes: RouteType) { }
 
-  getProducts()/*Observable<Product[]|null>*/ {
+  getProducts(): Observable<Product[]>{
 
     return this.http.get<Product[]>(this.routes.base + this.routes.products.products).pipe(
         catchError( err => {

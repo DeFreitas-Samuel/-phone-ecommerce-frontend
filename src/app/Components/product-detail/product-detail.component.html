@@ -1,6 +1,4 @@
 <div *ngIf="product$ | async as product; else loading" class="product-detail-container d-flex flex-row">
-    <br>
-    <!--TODO add utility classes done in the global css -->
     <div class="product-image-container d-flex flex-column justify-content-center">
         <img src="{{product.imageUrl}}" alt="Image of the product" class="product-image">
     </div>
