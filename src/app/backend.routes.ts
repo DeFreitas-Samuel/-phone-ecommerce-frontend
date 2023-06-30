@@ -1,5 +1,5 @@
 
-const API_HOST = 'localhost:8000';
+const API_HOST = 'phone-ecommerce-api-production.up.railway.app';
 
 export const BACKEND_ROUTES = {
   base: `http://${API_HOST}`,

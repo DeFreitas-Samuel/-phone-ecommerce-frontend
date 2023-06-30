@@ -16,13 +16,13 @@ import { UserDashboardComponent } from './components/user-dashboard/user-dashboa
 const routes: Routes = [
   { path: "login", component: LoginComponent, title: "Login", canActivate: [CanActivateIfLoggedIn]},
   { path: "signup", component: SignupComponent, title: "Sign Up", canActivate: [CanActivateIfLoggedIn]},
-  { path: "home", component: HomeComponent, title: "Home" },
   { path: "dashboard", component: UserDashboardComponent, title: "Dashboard", canActivate: [CanActivateIfLoggedIn] },
   { path: "not-found", component: PageNotFoundComponent, title: "Not Found" },
   { path: "products", component: ProductListComponent, title: "Product List" },
   { path: "product/:id", component: ProductDetailComponent, title: "Product Detail" },
   { path: "cart", component: ShoppingCartComponent, title: "Shopping Cart" },
   { path: "checkout", component: CheckoutComponent, title: "Checkout", canActivate: [CanActivateIfLoggedIn]},
+  { path: "home", component: HomeComponent, title: "Home" },
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "**", redirectTo: "not-found" }
 ];

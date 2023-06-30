@@ -1,7 +1,7 @@
 <div class="store-locator-bar d-flex">
     <p>FREE SHIPPING</p>
     <div class="store-location">
-        <i class="fa-solid fa-store" style="color: white; transform: scale(1.25);"></i>
+        <i class="fa-solid fa-store" style="color: white; "></i>
         <p>Shopping Center, University Boulevard West, Jacksonville, FL, USA</p>
     </div>
 </div>
@@ -15,20 +15,20 @@
     
     <div class="d-flex flex-row user-controls">
         <a routerLink="login" *ngIf="!isLoggedIn" class="d-flex flex-row header-link">
-            <i class="fa-solid fa-right-to-bracket" style="color: var(--main-color); transform: scale(1.25);"></i>
+            <i class="fa-solid fa-right-to-bracket" style="color: var(--main-color); "></i>
             Login</a>
         <a routerLink="signup" *ngIf="!isLoggedIn" class="d-flex flex-row header-link">
-            <i class="fa-solid fa-user-plus" style="color: var(--main-color); transform: scale(1.25);"></i>
+            <i class="fa-solid fa-user-plus" style="color: var(--main-color); "></i>
             Sign Up</a>
         <a routerLink="dashboard" *ngIf="isLoggedIn" class="d-flex flex-row header-link">
-            <i class="fa-solid fa-user" style="color: var(--main-color); transform: scale(1.25);"></i>
+            <i class="fa-solid fa-user" style="color: var(--main-color); "></i>
             Dashboard</a>
         <a routerLink="cart" class="d-flex flex-row header-link cart-link">
-            <i class="fa-sharp fa-solid fa-cart-shopping" style="color: var(--main-color); transform: scale(1.25);"></i>
+            <i class="fa-sharp fa-solid fa-cart-shopping" style="color: var(--main-color);"></i>
             <div *ngIf="totalItemsInCart > 0" class="amount-badge">{{totalItemsInCart}}</div>
             My Cart</a>
         <a *ngIf="isLoggedIn" (click)="logout()" class="d-flex flex-row header-link">
-            <i class="fa-solid fa-right-from-bracket" style="color: var(--main-color); transform: scale(1.25);"></i>
+            <i class="fa-solid fa-right-from-bracket" style="color: var(--main-color); "></i>
             Logout</a>
     </div>
 
