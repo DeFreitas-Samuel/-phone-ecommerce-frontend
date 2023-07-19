@@ -2,7 +2,7 @@
 const API_HOST = 'phone-ecommerce-api-production.up.railway.app';
 
 export const BACKEND_ROUTES = {
-  base: `http://${API_HOST}`,
+  base: `https://${API_HOST}`,
   auth: {
       login: '/api/login',
       logout: '/api/logout',
